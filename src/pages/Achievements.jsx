@@ -88,7 +88,7 @@ const awards = [
   { year: 2025, time: '2025.6', students: '陶昱成、陈熙宇、陈慧珍、刘泽坤、李德林', competition: '第二届广东省计算机程序设计大赛', organizer: '', level: '省级', award: '二等奖' },
   { year: 2025, time: '2025.5', students: '陈慧珍、李德林、彭悦', competition: '第三届"盘古石杯"国际电子数据取证大赛', organizer: '', level: '', award: '三等奖' },
   { year: 2025, time: '2025.5', students: '李德林', competition: '第三届阿里云CTF', organizer: '阿里云', level: '国家级', award: '第四名' },
-  { year: 2025, time: '2025.3', students: '张浩、李德林', competition: '第十八届全国大学生软件创新大赛', organizer: '示范性软件学院联盟', level: '国家级', award: '一等奖' },
+  { year: 2025, time: '2025.3', students: '张浩、李德林', competition: '第十八届全国大学生软件创新大赛', organizer: '示范性软件学院联盟', level: '省级', award: '一等奖' },
   { year: 2025, time: '2025.1', students: '陶昱成、陈熙宇、陈慧珍', competition: '2025年能源网络安全大赛', organizer: '中国能源研究会', level: '国家级', award: '三等奖' },
   { year: 2024, time: '2024.12', students: '卢声涛、张浩楠等（BinX）', competition: '第八届"强网杯"全国网络安全挑战赛高阶技术专项赛', organizer: '信息工程大学、河南省委网信办等', level: '国家级', award: '优秀奖' },
   { year: 2024, time: '2024.11', students: '张浩楠、郑晨聪、张宇恒、薛捷耀', competition: '"中国网谷·华为杯"第三届中国研究生网络安全创新大赛创意作品赛', organizer: '中国学位与研究生教育学会、中国科协青少年科技中心', level: '国家级', award: '二等奖' },
