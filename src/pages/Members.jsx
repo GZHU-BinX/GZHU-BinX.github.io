@@ -1,6 +1,8 @@
 const advisor = {
   name: '鲁 辉',
   title: '教授 / 博士生导师 / 院长',
+  avatar: 'https://wyy.gzhu.edu.cn/__local/B/56/B7/3DE488A3ED6D8258455BDD9C079_93DAECA7_B0AC.png',
+  profileUrl: 'https://wyy.gzhu.edu.cn/info/1160/1575.htm',
   email: 'luhui@gzhu.edu.cn',
   interests: ['智能网络攻防', '大模型安全', '漏洞挖掘与渗透', '网络主动防御'],
   bio: '国家级人才。广州大学网络空间先进技术研究院院长、广东省新型基础设施网络安全重点实验室主任，黄埔方班班主任，中国网络空间新兴技术安全创新论坛（新安盟）秘书长。主要研究智能网络攻防与大模型安全，已发表高水平论文100余篇，授权专利50余项，获通信领域旗舰会议IEEE GlobalCom 2023最佳论文奖。\n\n在网络主动防御领域，主持设计面向溯源反制的"蜜洞"技术，作为方滨兴院士"盾立方-四密"主动防护体系的重要组成部分，成功应用于北京冬奥会、杭州亚运会、成都大运会、哈尔滨亚冬会、第15届全运会、127–138届广交会等重大网络安保活动，支撑教育部、网信办、国防等攻防演练，多次获致函感谢，成果获电子学会科技进步一等奖。\n\n在漏洞挖掘和渗透领域，实现高效漏洞挖掘和多智能体自主协同渗透，效率较国际主流技术提升一倍，发现100+关键设备及软件未知高危漏洞，经方滨兴院士为主任的专家委员会鉴定"知识驱动的闭环漏洞挖掘、多智能体攻击执行自主决策等关键技术处于国际领先水平"。\n\n在网安人才培养方面，以方滨兴院士班为载体，构建"求源-熵减-思辨"综合能力协同培养模式，推广至包括港澳在内的全国60余所高校，获广东省教学成果特等奖等荣誉。\n\n项目成果在全国能源、交通、通信、政务、国防、教育六大领域48家行业龙头单位深度应用，新增销售额超59亿元、利润超20亿元；担任中国网络空间安全人才教育论坛首届秘书长，推动300余所顶尖高校及企事业单位合作。',
@@ -21,6 +23,8 @@ const teachers = [
   {
     name: '王志刚',
     title: '副教授 / 博士生导师',
+    avatar: 'https://wyy.gzhu.edu.cn/__local/A/8A/E3/2510B2FD63D17E187D120145D53_29834DDA_314A1.jpg',
+    profileUrl: 'https://wyy.gzhu.edu.cn/info/1160/2903.htm',
     email: 'wangzhigang@gzhu.edu.cn',
     interests: ['数据安全', '深度学习', '大模型安全', '高性能计算'],
     bio: '广东省新型基础设施网络安全重点实验室副主任。主要研究数据安全、深度学习、大模型与高性能计算，已发表论文40余篇；主持国家自然科学基金、中国博士后科学基金特别资助、广东省重点研发-课题等项目8项。受邀在CCF会刊《中国计算机学会通讯》及多项学术大会发表文章或做特邀报告；参编盾立方系列蓝皮书和行业标准。',
@@ -35,6 +39,8 @@ const teachers = [
   {
     name: '卢泽丰',
     title: '副教授',
+    avatar: 'https://wyy.gzhu.edu.cn/__local/6/13/88/00A58122EE7B36AE85BB19B9896_7A068DC1_6065A.png',
+    profileUrl: 'https://wyy.gzhu.edu.cn/info/1160/4383.htm',
     email: 'luzefeng@gzhu.edu.cn',
     interests: ['人工智能安全', '多模态大模型攻防', '智能交通'],
     bio: '主要研究人工智能安全、多模态大模型对抗攻防、智能交通，在IEEE TIFS、IEEE TMM、IEEE TNNLS、IEEE TITS、AEI等国际重要学术期刊发表论文20余篇；申请或授权国家发明专利10余项；主持或参与国家重点研发计划课题、国自然面上项目、广东省重点研发计划课题。',
@@ -48,6 +54,8 @@ const teachers = [
   {
     name: '何郁郁',
     title: '讲师',
+    avatar: 'https://wyy.gzhu.edu.cn/__local/2/59/F3/B0BA9745D2692656A2D4FD44441_16E2E0C6_9830.jpg',
+    profileUrl: 'https://wyy.gzhu.edu.cn/info/1160/1581.htm',
     email: 'heyy@gzhu.edu.cn',
     interests: ['软件与系统安全', '移动安全', '软件测试', '网络攻防'],
     bio: '主要研究软件与系统安全、移动安全、软件测试及安全分析、网络攻防；主持国家自然科学基金青年项目、国家重点研发子课题、广州市科技计划项目等6项；在IEEE S&P、ACM CCS等顶级会议发表高水平论文10余篇；参与设计面向溯源反制的"蜜洞"技术，应用于北京冬奥会、杭州亚运会、成都大运会、哈尔滨亚冬会、第15届全运会等重大网络安保活动；参编盾立方系列蓝皮书和行业标准。',
@@ -56,6 +64,8 @@ const teachers = [
   {
     name: '陈艳利',
     title: '讲师',
+    avatar: 'https://wyy.gzhu.edu.cn/__local/6/90/A4/7F2639F695C802FFE1CE7800937_CC8CBC1E_33BD.jpeg',
+    profileUrl: 'https://wyy.gzhu.edu.cn/info/1160/2027.htm',
     email: 'yanli.chen@gzhu.edu.cn',
     interests: ['智能化网络攻防', '人工智能安全'],
     bio: '广东省新型基础设施网络安全重点实验室副主任，致力于智能化网络攻防与人工智能安全研究。主持及参与国家级、省部级项目十余项，包括国家重点研发计划课题、广东省重点领域研发计划课题、国家自然科学基金联合基金项目、省自然科学基金等；在IEEE TIFS、IEEE TPAMI、IEEE TMM等顶级期刊、会议发表高水平论文10余篇；出版学术编著1部；申请国家发明专利10余项。',
@@ -80,15 +90,18 @@ const alumniByYear = [
   },
   {
     year: '2024届',
-    dests: ['广州市公安', '微众银行'],
+    dests: ['广州市公安', '微众银行', '深信服', '光大银行'],
   },
 ]
 
 function MemberCard({ member, large }) {
-  return (
-    <div className={`card flex items-start gap-4`}>
-      <div className={`rounded-full bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold flex-shrink-0 ${large ? 'w-14 h-14 text-xl' : 'w-10 h-10 text-sm'}`}>
-        {member.name[0]}
+  const inner = (
+    <div className={`card flex items-start gap-4 ${member.profileUrl ? 'hover:shadow-md transition-shadow cursor-pointer' : ''}`}>
+      <div className={`rounded-lg overflow-hidden flex-shrink-0 ${large ? 'w-32 h-42' : 'w-24 h-30'}`}>
+        {member.avatar
+          ? <img src={member.avatar} alt={member.name} className="w-full h-full object-cover object-[center_15%]" />
+          : <div className={`w-full h-full bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold ${large ? 'text-xl' : 'text-sm'}`}>{member.name[0]}</div>
+        }
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
@@ -122,6 +135,9 @@ function MemberCard({ member, large }) {
       </div>
     </div>
   )
+  return member.profileUrl
+    ? <a href={member.profileUrl} target="_blank" rel="noopener noreferrer" className="block">{inner}</a>
+    : inner
 }
 
 export default function Members() {

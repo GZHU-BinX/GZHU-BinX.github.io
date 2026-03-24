@@ -58,7 +58,7 @@ export default function Friends() {
       <div className="mt-12 p-5 bg-gray-50 rounded-xl border border-dashed border-gray-200 text-center">
         <p className="text-sm text-gray-500 mb-2">想与我们互换友情链接？</p>
         <a
-          href="mailto:contact@gzhu-iad.edu.cn"
+          href="mailto:luhui@gzhu.edu.cn"
           className="btn-primary text-xs"
         >
           联系我们

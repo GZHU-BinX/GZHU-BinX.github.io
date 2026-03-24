@@ -112,8 +112,8 @@ export default function JoinUs() {
               </div>
               <div>
                 <div className="text-gray-400 text-xs">邮箱</div>
-                <a href="mailto:contact@gzhu-iad.edu.cn" className="text-primary-600 hover:underline">
-                  contact@gzhu-iad.edu.cn
+                <a href="mailto:luhui@gzhu.edu.cn" className="text-primary-600 hover:underline">
+                  luhui@gzhu.edu.cn
                 </a>
               </div>
             </div>
