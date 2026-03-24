@@ -474,7 +474,7 @@ export default function Achievements() {
             </ul>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {vulns.map((v, i) => (
+            {[...vulns].sort((a, b) => b.date.localeCompare(a.date)).map((v, i) => (
               <div key={i} className="bg-white border border-gray-100 rounded-lg px-4 py-3 hover:shadow-sm transition-shadow">
                 <div className="flex items-center justify-between mb-1.5">
                   <span className={`text-xs font-bold px-2 py-0.5 rounded border ${vulnTypeClass(v.id)}`}>{v.id}</span>
