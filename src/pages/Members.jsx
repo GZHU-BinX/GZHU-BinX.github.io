@@ -2,16 +2,17 @@ const advisor = {
   name: '鲁 辉',
   title: '教授 / 博士生导师 / 院长',
   email: 'luhui@gzhu.edu.cn',
-  interests: ['智能化网络攻防', '漏洞挖掘与利用', '人工智能安全', '恶意代码分析'],
-  bio: '国家级人才项目入选者，省级人才讲座教授。现任广州大学网络空间先进技术研究院院长、黄埔方班班主任，中国网络空间新兴技术安全创新论坛（新安盟）秘书长，中国网络空间安全协会竞演办负责人。广州大学"百人计划"引进人才，广州市青年后备人才，广东省计算机协会网络空间安全专委会委员，深圳平安金融研究院专家委员。长期致力于智能化网络攻防、漏洞挖掘与利用、人工智能安全等研究工作，主持参与多项国家重点研发计划课题、国家自然科学基金面上项目、广东省重点领域研发计划项目等。挖掘主流操作系统和软件未知漏洞80余个，发表论文60余篇，专利30余项。获2023年广东省科技进步二等奖，2020年广东省哲学社科成果二等奖等多项荣誉。带领团队保障第24届北京冬奥会、杭州亚运会以及多届广交会和文博会平台安全。',
+  interests: ['智能网络攻防', '大模型安全', '漏洞挖掘与渗透', '网络主动防御'],
+  bio: '国家级人才。广州大学网络空间先进技术研究院院长、广东省新型基础设施网络安全重点实验室主任，黄埔方班班主任，中国网络空间新兴技术安全创新论坛（新安盟）秘书长。主要研究智能网络攻防与大模型安全，已发表高水平论文100余篇，授权专利50余项，获通信领域旗舰会议IEEE GlobalCom 2023最佳论文奖。\n\n在网络主动防御领域，主持设计面向溯源反制的"蜜洞"技术，作为方滨兴院士"盾立方-四密"主动防护体系的重要组成部分，成功应用于北京冬奥会、杭州亚运会、成都大运会、哈尔滨亚冬会、第15届全运会、127–138届广交会等重大网络安保活动，支撑教育部、网信办、国防等攻防演练，多次获致函感谢，成果获电子学会科技进步一等奖。\n\n在漏洞挖掘和渗透领域，实现高效漏洞挖掘和多智能体自主协同渗透，效率较国际主流技术提升一倍，发现100+关键设备及软件未知高危漏洞，经方滨兴院士为主任的专家委员会鉴定"知识驱动的闭环漏洞挖掘、多智能体攻击执行自主决策等关键技术处于国际领先水平"。\n\n在网安人才培养方面，以方滨兴院士班为载体，构建"求源-熵减-思辨"综合能力协同培养模式，推广至包括港澳在内的全国60余所高校，获广东省教学成果特等奖等荣誉。\n\n项目成果在全国能源、交通、通信、政务、国防、教育六大领域48家行业龙头单位深度应用，新增销售额超59亿元、利润超20亿元；担任中国网络空间安全人才教育论坛首届秘书长，推动300余所顶尖高校及企事业单位合作。',
   awards: [
-    '2023年广东省科技进步二等奖',
-    '2020年广东省哲学社科成果二等奖',
+    '电子学会科技进步一等奖',
+    'IEEE GlobalCom 2023最佳论文奖',
+    '广东省科技进步二等奖',
+    '广东省哲学社科成果二等奖',
+    '广东省教学成果特等奖',
+    '网络安全产学协同育人优秀案例一等奖',
+    '网络安全优秀创新成果奖',
     '广东省疫情阶段在线教学优秀案例一等奖',
-    '中国网络空间安全协会"2021年人工智能安全典型实践案例"',
-    '第三届网络空间安全产学协同育人优秀案例一等奖',
-    '首届"网络安全优秀创新成果奖"',
-    '中国产学研合作成果二等奖',
     '冬奥积极参与人（中央网信办颁发）',
   ],
 }
@@ -64,29 +65,9 @@ const teachers = [
   },
 ]
 
-const phds = [
-  {
-    name: '张 三',
-    grade: '2022级博士',
-    direction: '智能漏洞挖掘',
-    interests: ['模糊测试', '程序分析'],
-  },
-  {
-    name: '李 四',
-    grade: '2021级博士',
-    direction: '对抗样本攻防',
-    interests: ['深度学习安全', '图像对抗'],
-  },
-]
+const phds = []
 
-const masters = [
-  { name: '王 五', grade: '2023级硕士', direction: '固件安全分析' },
-  { name: '赵 六', grade: '2023级硕士', direction: '网络流量检测' },
-  { name: '陈 七', grade: '2022级硕士', direction: '大语言模型安全' },
-  { name: '刘 八', grade: '2022级硕士', direction: '恶意代码检测' },
-  { name: '孙 九', grade: '2021级硕士', direction: '智能合约安全' },
-  { name: '周 十', grade: '2021级硕士', direction: '安卓应用安全' },
-]
+const masters = []
 
 const alumniByYear = [
   {
@@ -95,11 +76,11 @@ const alumniByYear = [
   },
   {
     year: '2025届',
-    dests: ['广州市网警', '佛山市网警', '阿里巴巴', '拼多多', '滴滴'],
+    dests: ['广州市公安', '佛山市公安', '阿里巴巴', '拼多多', '滴滴'],
   },
   {
     year: '2024届',
-    dests: ['广州市网警', '微众银行'],
+    dests: ['广州市公安', '微众银行'],
   },
 ]
 
@@ -168,54 +149,61 @@ export default function Members() {
       {/* 博士生 */}
       <section className="mb-12">
         <h2 className="text-lg font-semibold text-gray-800 mb-5">博士研究生</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {phds.map(m => (
-            <MemberCard key={m.name} member={m} />
-          ))}
-        </div>
+        {phds.length === 0 ? (
+          <div className="card text-center py-10 text-gray-400">
+            <p className="text-sm">成员信息待录入</p>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 gap-4">
+            {phds.map(m => <MemberCard key={m.name} member={m} />)}
+          </div>
+        )}
       </section>
 
       {/* 硕士生 */}
       <section className="mb-12">
         <h2 className="text-lg font-semibold text-gray-800 mb-5">硕士研究生</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {masters.map(m => (
-            <div key={m.name} className="card">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                  {m.name[0]}
+        {masters.length === 0 ? (
+          <div className="card text-center py-10 text-gray-400">
+            <p className="text-sm">成员信息待录入</p>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {masters.map(m => (
+              <div key={m.name} className="card">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">{m.name[0]}</div>
+                  <div>
+                    <div className="text-sm font-semibold text-gray-900">{m.name}</div>
+                    <div className="text-xs text-gray-400">{m.grade}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-sm font-semibold text-gray-900">{m.name}</div>
-                  <div className="text-xs text-gray-400">{m.grade}</div>
-                </div>
+                <div className="mt-2 text-xs text-gray-500">研究方向：{m.direction}</div>
               </div>
-              <div className="mt-2 text-xs text-gray-500">研究方向：{m.direction}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* 毕业校友 */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-5">毕业去向</h2>
+        <div className="flex items-center gap-3 mb-6">
+          <h2 className="text-lg font-semibold text-gray-800">毕业去向</h2>
+          <span className="text-xs text-primary-600 bg-primary-50 border border-primary-100 rounded-full px-2.5 py-0.5 font-medium">历届就业情况</span>
+        </div>
         <div className="space-y-4">
           {alumniByYear.map(({ year, dests }) => (
-            <div key={year} className="bg-gray-50 rounded-xl border border-gray-100 px-5 py-4">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <span className="inline-block text-xs font-semibold text-white bg-primary-600 rounded-full px-3 py-1">{year}</span>
-                </div>
-                <div className="flex flex-wrap gap-2 pt-0.5">
-                  {dests.map((dest) => (
-                    <span
-                      key={dest}
-                      className="text-xs px-3 py-1 bg-white border border-gray-200 text-gray-700 rounded-full shadow-sm"
-                    >
-                      {dest}
-                    </span>
-                  ))}
-                </div>
+            <div key={year} className="rounded-xl border border-gray-100 overflow-hidden shadow-sm">
+              <div className="bg-primary-600 px-5 py-3 flex items-center gap-3">
+                <span className="text-sm font-bold text-white">{year}</span>
+                <span className="text-xs text-primary-200">{dests.length} 个就业方向</span>
+              </div>
+              <div className="px-5 py-4 flex flex-wrap gap-2.5">
+                {dests.map(dest => (
+                  <span key={dest} className="text-sm font-medium px-4 py-1.5 bg-white border border-gray-200 text-gray-700 rounded-full hover:border-primary-300 hover:text-primary-700 transition-colors">
+                    {dest}
+                  </span>
+                ))}
               </div>
             </div>
           ))}

@@ -6,7 +6,7 @@ const navItems = [
   { path: '/achievements', label: '学术成果' },
   { path: '/members', label: '团队成员' },
   { path: '/join', label: '加入我们' },
-  { path: '/events', label: '新闻活动' },
+  { path: '/events', label: '课题组动态' },
   { path: '/friends', label: '友情链接' },
 ]
 
@@ -14,22 +14,22 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-primary-700 rounded-md flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-sm tracking-tight">IA</span>
+          <Link to="/" className="flex items-center gap-2.5">
+            <div className="w-7 h-7 bg-primary-600 rounded flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-bold text-xs">IA</span>
             </div>
             <div className="hidden sm:block">
-              <div className="text-sm font-bold text-gray-900 leading-tight">智能攻防课题组</div>
-              <div className="text-xs text-gray-500 leading-tight">广州大学网络空间安全学院</div>
+              <div className="text-sm font-semibold text-gray-900 leading-tight">智能攻防课题组</div>
+              <div className="text-xs text-gray-400 leading-tight">广州大学网络空间安全学院</div>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-6">
             {navItems.map(({ path, label, end }) => (
               <NavLink
                 key={path}
@@ -46,7 +46,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            className="md:hidden p-1.5 text-gray-500 hover:text-gray-900"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="菜单"
           >

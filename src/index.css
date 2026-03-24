@@ -18,41 +18,31 @@
 
 @layer components {
   .nav-link {
-    @apply relative text-gray-600 hover:text-primary-700 transition-colors duration-200 font-medium text-sm tracking-wide py-1;
-  }
-
-  .nav-link::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300;
-  }
-
-  .nav-link:hover::after,
-  .nav-link.active::after {
-    @apply w-full;
+    @apply text-gray-500 hover:text-primary-700 transition-colors duration-150 text-sm py-1;
   }
 
   .nav-link.active {
-    @apply text-primary-700;
+    @apply text-primary-700 font-medium;
   }
 
   .section-title {
-    @apply text-2xl font-bold text-gray-900 mb-2;
+    @apply text-xl font-semibold text-gray-900 mb-2;
   }
 
   .section-divider {
-    @apply w-12 h-1 bg-primary-600 mb-8;
+    @apply w-8 h-0.5 bg-primary-500 mb-8;
   }
 
   .card {
-    @apply bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 p-6;
+    @apply bg-white rounded-lg border border-gray-100 p-5;
   }
 
   .btn-primary {
-    @apply inline-flex items-center px-5 py-2.5 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700 transition-colors duration-200;
+    @apply inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded hover:bg-primary-700 transition-colors duration-150;
   }
 
   .btn-outline {
-    @apply inline-flex items-center px-5 py-2.5 border border-primary-600 text-primary-600 text-sm font-medium rounded-md hover:bg-primary-50 transition-colors duration-200;
+    @apply inline-flex items-center px-4 py-2 border border-primary-600 text-primary-600 text-sm font-medium rounded hover:bg-primary-50 transition-colors duration-150;
   }
 
   .page-container {

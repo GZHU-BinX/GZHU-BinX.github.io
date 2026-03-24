@@ -1,38 +1,16 @@
+/*
+ * @Author: SanMuzZzZz 1614858685@qq.com
+ * @Date: 2026-03-24 17:23:07
+ * @LastEditors: SanMuzZzZz 1614858685@qq.com
+ * @LastEditTime: 2026-03-24 19:38:21
+ * @FilePath: /lu-website/src/pages/Friends.jsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 const friends = [
   {
-    category: '高校科研机构',
+    category: '相关单位',
     links: [
-      { name: '清华大学网络与信息安全实验室', url: 'https://netsec.ccert.edu.cn/' },
-      { name: '浙江大学系统安全实验室', url: 'https://nesa.zju.edu.cn/' },
-      { name: '中国科学院信息工程研究所', url: 'http://www.iie.ac.cn/' },
-      { name: '武汉大学国家网络安全学院', url: 'https://cse.whu.edu.cn/' },
-    ],
-  },
-  {
-    category: '国内合作高校',
-    links: [
-      { name: '广州大学网络空间安全学院', url: 'https://www.gzhu.edu.cn/' },
-      { name: '华南理工大学计算机科学与工程学院', url: 'https://www2.scut.edu.cn/cs/' },
-      { name: '中山大学信息科学与技术学院', url: 'https://ist.sysu.edu.cn/' },
-    ],
-  },
-  {
-    category: '学术资源',
-    links: [
-      { name: 'IEEE Security & Privacy', url: 'https://www.ieee-security.org/TC/SP2025/' },
-      { name: 'ACM CCS', url: 'https://www.sigsac.org/ccs/' },
-      { name: 'USENIX Security', url: 'https://www.usenix.org/conference/usenixsecurity25' },
-      { name: 'NDSS Symposium', url: 'https://www.ndss-symposium.org/' },
-      { name: 'CVE Details', url: 'https://www.cvedetails.com/' },
-    ],
-  },
-  {
-    category: '安全社区',
-    links: [
-      { name: '看雪安全论坛', url: 'https://bbs.kanxue.com/' },
-      { name: 'FreeBuf 网络安全行业门户', url: 'https://www.freebuf.com/' },
-      { name: 'CTF Time', url: 'https://ctftime.org/' },
-      { name: 'pwn.college', url: 'https://pwn.college/' },
+      { name: '广州大学网络空间安全学院', url: 'https://wyy.gzhu.edu.cn/' },
     ],
   },
 ]

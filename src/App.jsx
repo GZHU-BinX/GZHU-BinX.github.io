@@ -1,4 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+/*
+ * @Author: SanMuzZzZz 1614858685@qq.com
+ * @Date: 2026-03-24 17:16:29
+ * @LastEditors: SanMuzZzZz 1614858685@qq.com
+ * @LastEditTime: 2026-03-24 19:50:57
+ * @FilePath: /lu-website/src/App.jsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Achievements from './pages/Achievements'
@@ -7,9 +16,16 @@ import JoinUs from './pages/JoinUs'
 import Events from './pages/Events'
 import Friends from './pages/Friends'
 
+function ScrollToTop() {
+  const { pathname, search } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname, search])
+  return null
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

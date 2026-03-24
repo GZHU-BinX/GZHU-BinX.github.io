@@ -73,7 +73,7 @@ export default function Events() {
 
   return (
     <div className="page-container">
-      <h1 className="section-title">新闻活动</h1>
+      <h1 className="section-title">课题组动态</h1>
       <div className="section-divider" />
 
       {/* Tabs */}

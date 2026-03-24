@@ -1,60 +1,61 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 // ─── 学术论文 ─────────────────────────────────────────────────────────────────
 const papers = [
-  { year: 2025, venue: 'BIG DATA MINING AND ANALYTICS', title: 'COAPT：Bridging Semantic-Operational Divide in Autonomous Penetration Testing Through LLM-Driven Cognitive Planning', authors: '鲁辉、陈艳利、何郁郁等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'The Pursuer of Light: Exploration and Evolution of DAST Technology in XSS Vulnerability Detection', authors: '鲁辉、王志刚、卢泽丰、陈艳利、何郁郁等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'An Arms Race in the Inbox: A Systematic Review of Phishing Generation and the Rise of LLMs', authors: '陈艳利、何郁郁、鲁辉、王志刚等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'The Dawn of Intelligent Fuzzing: Exploring the Application of Large Language Models in Fuzzing', authors: '卢泽丰、陈艳利、何郁郁、王志刚、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'Reverse Engineering of Private Protocols: Methods, Tools, Challenges and Future Directions', authors: '何郁郁、陈艳利、王志刚、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'Unlocking the Next Generation of REST API Security: A Critical Analysis of the Path from Fuzzing to LLMs', authors: '王志刚、陈艳利、何郁郁、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'Enhancing Vulnerability Mining with Large Language Model', authors: '王志刚、何郁郁、陈艳利、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'Unveiling Directed Gray-Box Fuzzing: A Profound Insight from Foundational Principles to Future Frontiers', authors: '陈艳利、何郁郁、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'From Heuristics to Intelligence：Evolving Black-box Scanners for Modern Web Applications', authors: '何郁郁、陈艳利、王志刚、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC 2025', title: 'Unlocking LLM Potential: Critical Breakthroughs and Frontier Explorations in Retrieval-Augmented Generation', authors: '王志刚、陈艳利、何郁郁、鲁辉等' },
-  { year: 2025, venue: 'IEEE DSC MDATA', title: 'Analysis of Recent Research on Software Vulnerability Report Quality', authors: '刘义铭、钟志强、鲁辉等' },
-  { year: 2025, venue: 'IEEE Transactions on Cloud Computing', title: 'BPFGuard: Multi-Granularity Container Runtime Mandatory Access Control', authors: '鲁辉等' },
-  { year: 2025, venue: 'IEEE Communications Magazine', title: 'RED-Scenario: A Resource-Efficient Deployment Framework for Scenarios through Dependency Package Management', authors: '王乐等' },
-  { year: 2024, venue: '软件学报', title: '自动化渗透测试技术研究综述', authors: '鲁辉等' },
-  { year: 2024, venue: 'IEEE Network', title: 'An Efficient Incentive Mechanism for Federated Learning in Vehicular Networks', authors: '鲁辉等' },
-  { year: 2024, venue: 'IEEE Network', title: 'Recognizing BGP Communities Based on Graph Neural Network', authors: '鲁辉等' },
-  { year: 2024, venue: 'SIGNAL PROCESSING', title: 'Ring Co-XOR encryption based reversible data hiding for 3D mesh model', authors: '鲁辉等' },
-  { year: 2024, venue: 'WiMob 2024', title: 'Active and Passive Attack Detection Methods for Malicious Encrypted Traffic', authors: '鲁辉等' },
-  { year: 2024, venue: 'CloudNet 2024', title: 'Vulnerability Correlation, Multi-step Attack and Exploit Chain in Breach and Attack Simulation', authors: '鲁辉等' },
-  { year: 2024, venue: 'GLOBECOM 2024', title: 'Smart Contract Firewall: Protecting the on-Chain Smart Contract Projects', authors: '鲁辉等' },
-  { year: 2024, venue: 'MDPI Mathematics', title: 'VTT-LLM: Advancing Vulnerability-to-Tactic-and-Technique Mapping through Fine-Tuning of Large Language Model', authors: '王乐、范敦球等' },
-  { year: 2024, venue: 'Human-centric Computing', title: 'DFScan: Security Scanner of the Dockerfile Based on Instruction Coverage and Attack Perspective', authors: '鲁辉等' },
-  { year: 2024, venue: '中国信息安全', title: '网络攻防对抗下的漏洞治理探索与实践', authors: '鲁辉、王乐等' },
-  { year: 2024, venue: '新型电力系统太湖论坛', title: '基于动态感知攻击图的蜜阵设计及电力系统应用', authors: '鲁辉等' },
-  { year: 2023, venue: '软件学报', title: '基于Capstone和流敏感混合执行的自动化反混淆技术', authors: '鲁辉、郭润生、金成杰等' },
-  { year: 2023, venue: 'IWQoS 2023', title: 'Improving Precision of Detecting Deserialization Vulnerabilities with Bytecode Analysis', authors: '鲁辉等' },
-  { year: 2023, venue: 'CloudNet 2023', title: 'Research on the Exploitability of Binary Software Vulnerabilities', authors: '鲁辉等' },
-  { year: 2023, venue: 'IEEE Wireless Communications', title: 'Decentralized Cooperative Caching for Sustainable Metaverse Via Meta Self-Supervision Learning', authors: '鲁辉等' },
-  { year: 2023, venue: 'IEEE Internet of Things Journal', title: 'Do Not Trust the Clouds Easily: The Insecurity of Content Security Policy Based on Object Storage', authors: '鲁辉等' },
-  { year: 2022, venue: 'IEEE TNSE', title: 'DeepAutoD: Research on Distributed Machine Learning Oriented Scalable Mobile Communication Security Unpacking System', authors: '鲁辉、金成杰等' },
-  { year: 2022, venue: 'IEEE DSC 2022', title: 'A Survey of Obfuscation and Deobfuscation Techniques in Android Code Protection', authors: '鲁辉等' },
-  { year: 2022, venue: 'Simulation Modelling Practice and Theory', title: 'STG2P: A two-stage pipeline model for intrusion detection based on improved LightGBM and K-means', authors: '王乐等' },
-  { year: 2021, venue: 'IJMLC 2021', title: 'A multiple-kernel clustering based intrusion detection scheme for 5G and IoT networks', authors: '胡宁、田志宏、鲁辉等' },
-  { year: 2021, venue: 'Mobile Networks and Applications', title: 'Research on Intelligent Detection of Command Level Stack Pollution for Binary Program Analysis', authors: '鲁辉、金成杰等' },
-  { year: 2021, venue: 'Security and Communication Networks', title: 'StFuzzer: Contribution-Aware Coverage-Guided Fuzzing for Smart Devices', authors: '鲁辉等' },
-  { year: 2021, venue: 'IEEE Network', title: 'AutoD: Intelligent Blockchain Application Unpacking Based on JNI Layer Deception Call', authors: '鲁辉等' },
-  { year: 2021, venue: '广州大学学报（自然科学版）', title: '基于程序动态信息的漏洞自动利用技术研究', authors: '鲁辉等' },
-  { year: 2020, venue: 'Transactions on Emerging Telecom Tech', title: 'Advanced persistent threat organization identification based on software gene of malware', authors: '鲁辉等' },
-  { year: 2020, venue: 'IEEE Internet of Things Journal', title: 'Deep Reinforcement Learning for Partially Observable Data Poisoning Attack in Crowdsensing Systems', authors: '鲁辉等' },
-  { year: 2020, venue: 'CIAT 2020', title: 'A Systemic Review of Kernel Fuzzing', authors: '鲁辉等' },
-  { year: 2020, venue: 'Computers, Materials & Continua', title: 'Evaluating the Topology Coverage of BGP monitors', authors: '范敦球等' },
-  { year: 2019, venue: '信息技术与网络安全', title: '恶意计算机程序基因形式化研究', authors: '刘义铭等' },
-  { year: 2019, venue: 'ICAIS 2019', title: 'A Review of Network Representation Learning', authors: '鲁辉、王乐等' },
-  { year: 2019, venue: 'ICAIS 2019', title: 'Research on Content Extraction of Rich Text Web Pages', authors: '鲁辉等' },
-  { year: 2019, venue: 'ICAIS 2019', title: 'A Dynamic Event Region Tracking Approach Based on Node Calibration', authors: '鲁辉、王乐等' },
-  { year: 2019, venue: 'ICAIS 2019', title: 'Network Protocol Analysis Base on WeChat PC Version', authors: '鲁辉等' },
-  { year: 2019, venue: 'China Communications', title: 'A Novel Search Engine for Internet of Everything Based on Dynamic Prediction', authors: '鲁辉等' },
-  { year: 2019, venue: 'ICAIS 2019', title: 'A Distributed Cryptanalysis Framework Based on Mobile Phones', authors: '王乐、鲁辉等' },
-  { year: 2018, venue: 'ICCCS 2018', title: 'Quality-aware query based on relative source quality', authors: '鲁辉、王乐等' },
-  { year: 2018, venue: 'ICCCS 2018', title: 'Greedy embedding strategy for dynamic graphs based on spanning tree', authors: '王乐、鲁辉等' },
-  { year: 2018, venue: 'ICCCS 2018', title: 'A trusted computing base for information system classified protection', authors: '鲁辉、王乐等' },
-  { year: 2018, venue: 'ICCCS 2018', title: 'An encryption traffic analysis countermeasure model based on game theory', authors: '鲁辉、王乐等' },
-  { year: 2018, venue: 'ICCCS 2018', title: 'The research on security audit for information system classified protection', authors: '鲁辉、王乐等' },
+  { year: 2025, venue: 'BIG DATA MINING AND ANALYTICS', title: 'COAPT：Bridging Semantic-Operational Divide in Autonomous Penetration Testing Through LLM-Driven Cognitive Planning', authors: '鲁辉、陈艳利、何郁郁等', dir: '智能渗透' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'The Pursuer of Light: Exploration and Evolution of DAST Technology in XSS Vulnerability Detection', authors: '鲁辉、王志刚、卢泽丰、陈艳利、何郁郁等', dir: '智能渗透' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'An Arms Race in the Inbox: A Systematic Review of Phishing Generation and the Rise of LLMs', authors: '陈艳利、何郁郁、鲁辉、王志刚等', dir: '大模型安全' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'The Dawn of Intelligent Fuzzing: Exploring the Application of Large Language Models in Fuzzing', authors: '卢泽丰、陈艳利、何郁郁、王志刚、鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'Reverse Engineering of Private Protocols: Methods, Tools, Challenges and Future Directions', authors: '何郁郁、陈艳利、王志刚、鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'Unlocking the Next Generation of REST API Security: A Critical Analysis of the Path from Fuzzing to LLMs', authors: '王志刚、陈艳利、何郁郁、鲁辉等', dir: '智能渗透' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'Enhancing Vulnerability Mining with Large Language Model', authors: '王志刚、何郁郁、陈艳利、鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'Unveiling Directed Gray-Box Fuzzing: A Profound Insight from Foundational Principles to Future Frontiers', authors: '陈艳利、何郁郁、鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'From Heuristics to Intelligence：Evolving Black-box Scanners for Modern Web Applications', authors: '何郁郁、陈艳利、王志刚、鲁辉等', dir: '智能渗透' },
+  { year: 2025, venue: 'IEEE DSC 2025', title: 'Unlocking LLM Potential: Critical Breakthroughs and Frontier Explorations in Retrieval-Augmented Generation', authors: '王志刚、陈艳利、何郁郁、鲁辉等', dir: '大模型安全' },
+  { year: 2025, venue: 'IEEE DSC MDATA', title: 'Analysis of Recent Research on Software Vulnerability Report Quality', authors: '刘义铭、钟志强、鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2025, venue: 'IEEE Transactions on Cloud Computing', title: 'BPFGuard: Multi-Granularity Container Runtime Mandatory Access Control', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2025, venue: 'IEEE Communications Magazine', title: 'RED-Scenario: A Resource-Efficient Deployment Framework for Scenarios through Dependency Package Management', authors: '王乐等', dir: '智能渗透' },
+  { year: 2024, venue: '软件学报', title: '自动化渗透测试技术研究综述', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2024, venue: 'IEEE Network', title: 'An Efficient Incentive Mechanism for Federated Learning in Vehicular Networks', authors: '鲁辉等', dir: '大模型安全' },
+  { year: 2024, venue: 'IEEE Network', title: 'Recognizing BGP Communities Based on Graph Neural Network', authors: '鲁辉等', dir: '大模型安全' },
+  { year: 2024, venue: 'SIGNAL PROCESSING', title: 'Ring Co-XOR encryption based reversible data hiding for 3D mesh model', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2024, venue: 'WiMob 2024', title: 'Active and Passive Attack Detection Methods for Malicious Encrypted Traffic', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2024, venue: 'CloudNet 2024', title: 'Vulnerability Correlation, Multi-step Attack and Exploit Chain in Breach and Attack Simulation', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2024, venue: 'GLOBECOM 2024', title: 'Smart Contract Firewall: Protecting the on-Chain Smart Contract Projects', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2024, venue: 'MDPI Mathematics', title: 'VTT-LLM: Advancing Vulnerability-to-Tactic-and-Technique Mapping through Fine-Tuning of Large Language Model', authors: '王乐、范敦球等', dir: '大模型安全' },
+  { year: 2024, venue: 'Human-centric Computing', title: 'DFScan: Security Scanner of the Dockerfile Based on Instruction Coverage and Attack Perspective', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2024, venue: '中国信息安全', title: '网络攻防对抗下的漏洞治理探索与实践', authors: '鲁辉、王乐等', dir: '智能渗透' },
+  { year: 2024, venue: '新型电力系统太湖论坛', title: '基于动态感知攻击图的蜜阵设计及电力系统应用', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2023, venue: '软件学报', title: '基于Capstone和流敏感混合执行的自动化反混淆技术', authors: '鲁辉、郭润生、金成杰等', dir: '智能漏洞挖掘' },
+  { year: 2023, venue: 'IWQoS 2023', title: 'Improving Precision of Detecting Deserialization Vulnerabilities with Bytecode Analysis', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2023, venue: 'CloudNet 2023', title: 'Research on the Exploitability of Binary Software Vulnerabilities', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2023, venue: 'IEEE Wireless Communications', title: 'Decentralized Cooperative Caching for Sustainable Metaverse Via Meta Self-Supervision Learning', authors: '鲁辉等', dir: '大模型安全' },
+  { year: 2023, venue: 'IEEE Internet of Things Journal', title: 'Do Not Trust the Clouds Easily: The Insecurity of Content Security Policy Based on Object Storage', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2022, venue: 'IEEE TNSE', title: 'DeepAutoD: Research on Distributed Machine Learning Oriented Scalable Mobile Communication Security Unpacking System', authors: '鲁辉、金成杰等', dir: '智能漏洞挖掘' },
+  { year: 2022, venue: 'IEEE DSC 2022', title: 'A Survey of Obfuscation and Deobfuscation Techniques in Android Code Protection', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2022, venue: 'Simulation Modelling Practice and Theory', title: 'STG2P: A two-stage pipeline model for intrusion detection based on improved LightGBM and K-means', authors: '王乐等', dir: '大模型安全' },
+  { year: 2021, venue: 'IJMLC 2021', title: 'A multiple-kernel clustering based intrusion detection scheme for 5G and IoT networks', authors: '胡宁、田志宏、鲁辉等', dir: '大模型安全' },
+  { year: 2021, venue: 'Mobile Networks and Applications', title: 'Research on Intelligent Detection of Command Level Stack Pollution for Binary Program Analysis', authors: '鲁辉、金成杰等', dir: '智能漏洞挖掘' },
+  { year: 2021, venue: 'Security and Communication Networks', title: 'StFuzzer: Contribution-Aware Coverage-Guided Fuzzing for Smart Devices', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2021, venue: 'IEEE Network', title: 'AutoD: Intelligent Blockchain Application Unpacking Based on JNI Layer Deception Call', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2021, venue: '广州大学学报（自然科学版）', title: '基于程序动态信息的漏洞自动利用技术研究', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2020, venue: 'Transactions on Emerging Telecom Tech', title: 'Advanced persistent threat organization identification based on software gene of malware', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2020, venue: 'IEEE Internet of Things Journal', title: 'Deep Reinforcement Learning for Partially Observable Data Poisoning Attack in Crowdsensing Systems', authors: '鲁辉等', dir: '大模型安全' },
+  { year: 2020, venue: 'CIAT 2020', title: 'A Systemic Review of Kernel Fuzzing', authors: '鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2020, venue: 'Computers, Materials & Continua', title: 'Evaluating the Topology Coverage of BGP monitors', authors: '范敦球等', dir: '智能渗透' },
+  { year: 2019, venue: '信息技术与网络安全', title: '恶意计算机程序基因形式化研究', authors: '刘义铭等', dir: '智能漏洞挖掘' },
+  { year: 2019, venue: 'ICAIS 2019', title: 'A Review of Network Representation Learning', authors: '鲁辉、王乐等', dir: '大模型安全' },
+  { year: 2019, venue: 'ICAIS 2019', title: 'Research on Content Extraction of Rich Text Web Pages', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2019, venue: 'ICAIS 2019', title: 'A Dynamic Event Region Tracking Approach Based on Node Calibration', authors: '鲁辉、王乐等', dir: '大模型安全' },
+  { year: 2019, venue: 'ICAIS 2019', title: 'Network Protocol Analysis Base on WeChat PC Version', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2019, venue: 'China Communications', title: 'A Novel Search Engine for Internet of Everything Based on Dynamic Prediction', authors: '鲁辉等', dir: '智能渗透' },
+  { year: 2019, venue: 'ICAIS 2019', title: 'A Distributed Cryptanalysis Framework Based on Mobile Phones', authors: '王乐、鲁辉等', dir: '智能漏洞挖掘' },
+  { year: 2018, venue: 'ICCCS 2018', title: 'Quality-aware query based on relative source quality', authors: '鲁辉、王乐等', dir: '智能渗透' },
+  { year: 2018, venue: 'ICCCS 2018', title: 'Greedy embedding strategy for dynamic graphs based on spanning tree', authors: '王乐、鲁辉等', dir: '大模型安全' },
+  { year: 2018, venue: 'ICCCS 2018', title: 'A trusted computing base for information system classified protection', authors: '鲁辉、王乐等', dir: '智能渗透' },
+  { year: 2018, venue: 'ICCCS 2018', title: 'An encryption traffic analysis countermeasure model based on game theory', authors: '鲁辉、王乐等', dir: '智能渗透' },
+  { year: 2018, venue: 'ICCCS 2018', title: 'The research on security audit for information system classified protection', authors: '鲁辉、王乐等', dir: '智能渗透' },
 ]
 
 // ─── 教改论文 ─────────────────────────────────────────────────────────────────
@@ -77,7 +78,9 @@ const projects = [
 
 // ─── 竞赛获奖 ─────────────────────────────────────────────────────────────────
 const awards = [
+  { year: 2026, time: '2026', students: '"BinX"战队（指导老师：鲁辉，队员：张浩、汤晓彬、张锐华、伍宇森）', competition: '第十九届全国大学生信息安全竞赛创新实践能力赛暑第三届“长城杯”网数智安全大赛广东赛区半决赛', organizer: '', level: '省级', award: '赛区一等奖' },
   { year: 2025, time: '2025.11', students: '吴竞航、伍宇森、陈彦名、张辛革', competition: '"华为杯"第四届中国研究生网络安全创新大赛实网对抗赛', organizer: '教育部、中国学位与研究生教育学会、中国科协青少年科技中心', level: '国家级', award: '三等奖' },
+  { year: 2025, time: '2025', students: '伍宇森、张浩、刘博宇、张锦匀', competition: '第一届腾讯智能渗透挑战赛', organizer: '腾讯', level: '', award: '第三名' },
   { year: 2025, time: '2025.9', students: '吴竞航、伍宇森、阮楚鸿（BinX）', competition: 'NIDC新能源网联汽车大赛·智能网联汽车攻防赛', organizer: '重庆市贸促会、重庆高新技术产业开发区管理委员会', level: '', award: '一等奖' },
   { year: 2025, time: '2025.9', students: '吴竞航、吴雨泽、陈彦名（BinX）', competition: '第二届天网杯网络安全大赛·智能网联汽车安全赛道', organizer: '天津市人民政府、国家计算机病毒应急处理中心、公安部第一研究所', level: '', award: '二等奖' },
   { year: 2025, time: '2025.8', students: '陶昱成、陈慧珍、何云飞、吴梓峰', competition: 'CISCN全国大学生信息安全竞赛', organizer: '教育部高等学校网络空间安全专业教学指导委员会', level: '国家级', award: '一等奖' },
@@ -260,21 +263,39 @@ function YearFilter({ years, selected, onChange }) {
 
 const paperYears = ['全部', ...new Set(papers.map(p => p.year))].sort((a, b) => a === '全部' ? -1 : b - a)
 const awardYears = ['全部', ...new Set(awards.map(a => a.year))].sort((a, b) => a === '全部' ? -1 : b - a)
+const DIRS = ['全部', '智能渗透', '智能漏洞挖掘', '大模型安全']
+const dirColors = {
+  '智能渗透': 'bg-orange-50 text-orange-700 border-orange-200',
+  '智能漏洞挖掘': 'bg-violet-50 text-violet-700 border-violet-200',
+  '大模型安全': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+}
 
 const TABS = [
-  { key: 'papers', label: '学术论文', count: papers.length },
-  { key: 'edu', label: '教改论文', count: eduPapers.length },
-  { key: 'projects', label: '承担项目', count: null },
   { key: 'awards', label: '竞赛获奖', count: awards.length },
   { key: 'vulns', label: '漏洞披露', count: vulns.length },
+  { key: 'projects', label: '承担项目', count: null },
+  { key: 'papers', label: '学术论文', count: papers.length },
+  { key: 'edu', label: '教改论文', count: eduPapers.length },
 ]
 
 export default function Achievements() {
-  const [tab, setTab] = useState('papers')
+  const [tab, setTab] = useState('awards')
   const [paperYear, setPaperYear] = useState('全部')
   const [awardYear, setAwardYear] = useState('全部')
+  const [dirFilter, setDirFilter] = useState('全部')
+  const [searchParams] = useSearchParams()
 
-  const filteredPapers = paperYear === '全部' ? papers : papers.filter(p => p.year === paperYear)
+  useEffect(() => {
+    const t = searchParams.get('tab')
+    const d = searchParams.get('dir')
+    if (t) setTab(t)
+    if (d) setDirFilter(d)
+  }, [searchParams])
+
+  const filteredPapers = papers.filter(p =>
+    (paperYear === '全部' || p.year === paperYear) &&
+    (dirFilter === '全部' || p.dir === dirFilter)
+  )
   const filteredAwards = awardYear === '全部' ? awards : awards.filter(a => a.year === awardYear)
 
   return (
@@ -302,9 +323,20 @@ export default function Achievements() {
       {/* ── 学术论文 ── */}
       {tab === 'papers' && (
         <section>
-          <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+          <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
             <span className="text-sm text-gray-500">{filteredPapers.length} 篇</span>
             <YearFilter years={paperYears} selected={paperYear} onChange={setPaperYear} />
+          </div>
+          {/* 研究方向筛选 */}
+          <div className="flex gap-2 flex-wrap mb-6">
+            {DIRS.map(d => (
+              <button key={d} onClick={() => setDirFilter(d)}
+                className={`px-3 py-1 text-xs font-medium rounded-full border transition-colors ${
+                  dirFilter === d
+                    ? 'bg-primary-600 text-white border-primary-600'
+                    : 'bg-white text-gray-600 border-gray-200 hover:border-primary-400 hover:text-primary-600'
+                }`}>{d}</button>
+            ))}
           </div>
           <div className="space-y-3">
             {filteredPapers.map((p, i) => (
@@ -317,6 +349,9 @@ export default function Achievements() {
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <span className="text-xs font-medium px-2 py-0.5 bg-primary-100 text-primary-700 rounded">{p.venue}</span>
                       <span className="text-xs text-gray-400">{p.year}</span>
+                      {p.dir && (
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${dirColors[p.dir]}`}>{p.dir}</span>
+                      )}
                     </div>
                     <p className="text-sm font-medium text-gray-900 leading-snug mb-0.5">{p.title}</p>
                     <p className="text-xs text-gray-500">作者：{p.authors}</p>

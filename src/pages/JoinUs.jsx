@@ -41,7 +41,7 @@ export default function JoinUs() {
               ],
             },
             {
-              title: '本科生科研助理',
+              title: '本科生',
               badge: '长期开放',
               color: 'amber',
               items: [
@@ -126,7 +126,7 @@ export default function JoinUs() {
               </div>
               <div>
                 <div className="text-gray-400 text-xs">地址</div>
-                <div className="text-gray-700">广东省广州市番禺区大学城外环西路230号<br />广州大学 网络空间安全学院</div>
+                <div className="text-gray-700"><br />广州大学 网络空间安全学院</div>
               </div>
             </div>
           </div>
