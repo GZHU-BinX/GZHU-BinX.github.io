@@ -7,7 +7,7 @@ const events = [
   },
   {
     year: 2025, month: '03', type: '竞赛', tag: 'award',
-    content: '张浩、李德林在第十八届全国大学生软件创新大赛中荣获国家级一等奖。',
+    content: '张浩、李德林在第十八届全国大学生软件创新大赛中荣获省级一等奖。',
   },
   {
     year: 2024, month: '11', type: '竞赛', tag: 'award',
