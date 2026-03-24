@@ -69,12 +69,7 @@ const eduPapers = [
 ]
 
 // ─── 承担项目 ─────────────────────────────────────────────────────────────────
-const projects = [
-  { title: '基于大语言模型的智能漏洞挖掘关键技术研究', source: '国家自然科学基金面上项目', period: '2024–2027', status: '在研' },
-  { title: '人工智能系统对抗攻防关键技术及应用', source: '广东省重点研发计划', period: '2023–2026', status: '在研' },
-  { title: '网络流量智能检测与溯源技术研究', source: '广州市科技计划项目', period: '2022–2025', status: '在研' },
-  { title: '固件安全分析与漏洞自动化挖掘', source: '国家自然科学基金青年项目', period: '2020–2023', status: '已结题' },
-]
+const projects = []
 
 // ─── 竞赛获奖 ─────────────────────────────────────────────────────────────────
 const awards = [
@@ -392,6 +387,11 @@ export default function Achievements() {
       {/* ── 承担项目 ── */}
       {tab === 'projects' && (
         <section>
+          {projects.length === 0 ? (
+            <div className="card text-center py-14 text-gray-400">
+              <p className="text-sm">项目信息待补充</p>
+            </div>
+          ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -418,6 +418,7 @@ export default function Achievements() {
               </tbody>
             </table>
           </div>
+          )}
         </section>
       )}
 
