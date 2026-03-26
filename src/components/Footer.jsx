@@ -30,6 +30,7 @@ export default function Footer() {
             <div className="space-y-1.5">
               {[
                 { to: '/events', label: '课题组动态' },
+                { to: '/gallery', label: '团建风采' },
                 { to: '/join', label: '加入我们' },
                 { to: '/friends', label: '友情链接' },
               ].map(({ to, label }) => (

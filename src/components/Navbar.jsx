@@ -7,6 +7,7 @@ const navItems = [
   { path: '/members', label: '团队成员' },
   { path: '/join', label: '加入我们' },
   { path: '/events', label: '课题组动态' },
+  { path: '/gallery', label: '团建风采' },
   { path: '/friends', label: '友情链接' },
 ]
 

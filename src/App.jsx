@@ -15,6 +15,7 @@ import Members from './pages/Members'
 import JoinUs from './pages/JoinUs'
 import Events from './pages/Events'
 import Friends from './pages/Friends'
+import Gallery from './pages/Gallery'
 
 function ScrollToTop() {
   const { pathname, search } = useLocation()
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="members" element={<Members />} />
           <Route path="join" element={<JoinUs />} />
           <Route path="events" element={<Events />} />
+          <Route path="gallery" element={<Gallery />} />
           <Route path="friends" element={<Friends />} />
         </Route>
       </Routes>
