@@ -1,0 +1,73 @@
+{
+  "activities": [
+    {
+      "title": "课题组秋季团建·白云山徒步",
+      "date": "2025-11",
+      "category": "团建出游",
+      "description": "课题组全体师生前往白云山开展秋季徒步活动，在登山途中交流学术心得，增进团队凝聚力。",
+      "cover": "https://picsum.photos/seed/hiking2025/600/400",
+      "images": [
+        "https://picsum.photos/seed/hiking2025a/800/600",
+        "https://picsum.photos/seed/hiking2025b/800/600",
+        "https://picsum.photos/seed/hiking2025c/800/600"
+      ]
+    },
+    {
+      "title": "2025年新年聚餐",
+      "date": "2025-01",
+      "category": "学术聚餐",
+      "description": "辞旧迎新之际，课题组师生欢聚一堂，回顾一年成果，展望新年研究计划。",
+      "cover": "https://picsum.photos/seed/dinner2025/600/400",
+      "images": [
+        "https://picsum.photos/seed/dinner2025a/800/600",
+        "https://picsum.photos/seed/dinner2025b/800/600"
+      ]
+    },
+    {
+      "title": "师生羽毛球友谊赛",
+      "date": "2024-10",
+      "category": "体育运动",
+      "description": "课题组在校体育馆举办师生羽毛球友谊赛，老师与同学们切磋球技，现场气氛热烈。",
+      "cover": "https://picsum.photos/seed/badminton2024/600/400",
+      "images": [
+        "https://picsum.photos/seed/badminton2024a/800/600",
+        "https://picsum.photos/seed/badminton2024b/800/600",
+        "https://picsum.photos/seed/badminton2024c/800/600"
+      ]
+    },
+    {
+      "title": "中秋博饼·欢乐团圆",
+      "date": "2024-09",
+      "category": "节日庆祝",
+      "description": "中秋佳节，课题组举办传统博饼活动，师生共度团圆时光，感受传统文化魅力。",
+      "cover": "https://picsum.photos/seed/moonfest2024/600/400",
+      "images": [
+        "https://picsum.photos/seed/moonfest2024a/800/600",
+        "https://picsum.photos/seed/moonfest2024b/800/600"
+      ]
+    },
+    {
+      "title": "课题组春季烧烤聚会",
+      "date": "2024-04",
+      "category": "团建出游",
+      "description": "春暖花开时节，课题组前往大学城户外烧烤基地，在轻松愉快的氛围中享受美食与友谊。",
+      "cover": "https://picsum.photos/seed/bbq2024/600/400",
+      "images": [
+        "https://picsum.photos/seed/bbq2024a/800/600",
+        "https://picsum.photos/seed/bbq2024b/800/600",
+        "https://picsum.photos/seed/bbq2024c/800/600"
+      ]
+    },
+    {
+      "title": "毕业季欢送会",
+      "date": "2024-06",
+      "category": "学术聚餐",
+      "description": "课题组为 2024 届毕业生举办欢送会，导师寄语、同窗回忆、合影留念，祝福每位毕业生前程似锦。",
+      "cover": "https://picsum.photos/seed/grad2024/600/400",
+      "images": [
+        "https://picsum.photos/seed/grad2024a/800/600",
+        "https://picsum.photos/seed/grad2024b/800/600"
+      ]
+    }
+  ]
+}

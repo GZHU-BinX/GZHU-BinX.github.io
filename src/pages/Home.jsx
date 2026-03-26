@@ -1,53 +1,16 @@
 import { Link } from 'react-router-dom'
+import homeData from '../data/home.json'
 
-const researchDirections = [
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    title: '智能渗透',
-    desc: '研究多智能体自主协同渗透技术，实现对目标系统的自动化攻击路径规划、漏洞利用与后渗透。',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    title: '智能漏洞挖掘',
-    desc: '融合模糊测试、程序分析和大语言模型等技术，实现关键设备及软件未知高危漏洞的高效自动化挖掘。',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
-    title: '大模型安全',
-    desc: '针对大语言模型的对抗攻击、提示注入等安全问题开展系统性研究，探索多模态大模型攻防对抗理论与防御方法。',
-  },
-]
+const researchDirections = homeData.researchDirections.map(d => ({
+  ...d,
+  icon: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={d.svgPath} />
+    </svg>
+  ),
+}))
 
-const recentNews = [
-  {
-    date: '2025-08',
-    text: '陶昱成、陈慧珍、何云飞、吴梓峰在 CISCN 全国大学生信息安全竞赛中荣获国家级一等奖。',
-  },
-  {
-    date: '2025-03',
-    text: '张浩、李德林在第十八届全国大学生软件创新大赛中荣获国家级一等奖。',
-  },
-  {
-    date: '2024-11',
-    text: '张浩楠等同学在"中国网谷·华为杯"第三届中国研究生网络安全创新大赛中荣获国家级二等奖。',
-  },
-  {
-    date: '2023-07',
-    text: '郑镛、陈俊翰、梁儒烽在 2023年 CIVC 天融信杯智能网联汽车信息安全攻防赛中斩获金奖。',
-  },
-]
+const recentNews = homeData.recentNews
 
 export default function Home() {
   return (
@@ -76,12 +39,7 @@ export default function Home() {
       <section className="border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
-            {[
-              { num: '50+', label: '发表论文' },
-              { num: '90+', label: '漏洞披露' },
-              { num: '40+', label: '团队成员' },
-              { num: '50+', label: '竞赛获奖' },
-            ].map(({ num, label }) => (
+            {homeData.stats.map(({ num, label }) => (
               <div key={label} className="text-center py-8">
                 <div className="text-2xl font-semibold text-gray-900 mb-1">{num}</div>
                 <div className="text-xs text-gray-400">{label}</div>
@@ -119,13 +77,7 @@ export default function Home() {
             <div className="bg-primary-50 rounded-lg border border-primary-100 p-5 space-y-3">
               <h3 className="font-semibold text-gray-900 text-sm mb-3">课题组信息</h3>
               <ul className="space-y-2.5 text-sm">
-                {[
-                  { label: '所属机构', value: '网络空间先进技术研究院' },
-                  { label: '所属高校', value: '广州大学' },
-                  { label: '负责人', value: '鲁辉 教授' },
-                  { label: '研究方向', value: '智能渗透 · 漏洞挖掘 · 大模型安全' },
-                  { label: '联系邮箱', value: 'luhui@gzhu.edu.cn' },
-                ].map(({ label, value }) => (
+                {homeData.labInfo.map(({ label, value }) => (
                   <li key={label} className="flex gap-3">
                     <span className="text-primary-400 w-20 flex-shrink-0 text-xs pt-0.5">{label}</span>
                     <span className="text-gray-700 text-xs font-medium">{value}</span>
@@ -164,14 +116,7 @@ export default function Home() {
                   发现100+高危CVE/CNVD漏洞，关键技术经院士委员会鉴定"处于国际领先水平"。
                 </p>
                 <div className="flex flex-wrap gap-1.5">
-                  {[
-                    '电子学会科技进步一等奖',
-                    'IEEE GlobalCom 2023最佳论文',
-                    '广东省科技进步二等奖',
-                    '广东省教学成果特等奖',
-                    '网络安全优秀创新成果奖',
-                    '冬奥积极参与人',
-                  ].map(a => (
+                  {homeData.honors.map(a => (
                     <span key={a} className="text-xs px-2 py-0.5 bg-gray-50 text-gray-500 border border-gray-100 rounded">{a}</span>
                   ))}
                 </div>

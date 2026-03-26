@@ -1,19 +1,6 @@
-/*
- * @Author: SanMuzZzZz 1614858685@qq.com
- * @Date: 2026-03-24 17:23:07
- * @LastEditors: SanMuzZzZz 1614858685@qq.com
- * @LastEditTime: 2026-03-24 19:38:21
- * @FilePath: /lu-website/src/pages/Friends.jsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-const friends = [
-  {
-    category: '相关单位',
-    links: [
-      { name: '广州大学网络空间安全学院', url: 'https://wyy.gzhu.edu.cn/' },
-    ],
-  },
-]
+import friendsData from '../data/friends.json'
+
+const { friends } = friendsData
 
 export default function Friends() {
   return (

@@ -1,62 +1,7 @@
 import { useState } from 'react'
+import eventsData from '../data/events.json'
 
-const events = [
-  {
-    year: 2025, month: '08', type: '竞赛', tag: 'award',
-    content: '陶昱成、陈慧珍、何云飞、吴梓峰在 CISCN 全国大学生信息安全竞赛中荣获国家级一等奖。',
-  },
-  {
-    year: 2025, month: '03', type: '竞赛', tag: 'award',
-    content: '张浩、李德林在第十八届全国大学生软件创新大赛中荣获省级一等奖。',
-  },
-  {
-    year: 2024, month: '11', type: '竞赛', tag: 'award',
-    content: '张浩楠、郑晨聪等同学在"中国网谷·华为杯"第三届中国研究生网络安全创新大赛中荣获国家级二等奖。',
-  },
-  {
-    year: 2024, month: '12', type: '安全', tag: 'vuln',
-    content: '课题组卢声涛等（BinX战队）在第八届"强网杯"全国网络安全挑战赛高阶技术专项赛中获国家级优秀奖。',
-  },
-  {
-    year: 2024, month: '01', type: '安全', tag: 'vuln',
-    content: '伍宇森等（AblazE战队）在第六届"强网杯"全国网络安全挑战赛中获国家级优胜奖。',
-  },
-  {
-    year: 2023, month: '07', type: '竞赛', tag: 'award',
-    content: '郑镛、陈俊翰、梁儒烽在 2023年 CIVC 天融信杯智能网联汽车信息安全攻防赛中斩获金奖。',
-  },
-  {
-    year: 2023, month: '01', type: '竞赛', tag: 'award',
-    content: '卢声涛、王昊、阳长江在第七届蓝帽杯全国大学生网络安全技能大赛中荣获一等奖（公安部主办）。',
-  },
-  {
-    year: 2021, month: '08', type: '安全', tag: 'vuln',
-    content: '学生温志华发现微软Edge浏览器漏洞，获微软致谢并入选微软全球最有价值安全研究员（2021 MSRC MVR）。',
-  },
-  {
-    year: 2021, month: '10', type: '竞赛', tag: 'award',
-    content: '林炼升等（空盾科技团队）在第七届中国国际"互联网+"大学生创新创业大赛中荣获银奖。',
-  },
-  {
-    year: 2020, month: '09', type: '竞赛', tag: 'award',
-    content: '李垠帅等同学在第十三届全国大学生信息安全竞赛中荣获赛区特等奖。',
-  },
-]
-
-const medias = [
-  { source: '羊城晚报', title: '广州大学：机制活平台强人才专 以高质量成果转化服务湾区发展', url: 'https://edu.ycwb.com/2025-12/09/content_53842633.htm', date: '2025-12' },
-  { source: '广州大学网络空间安全学院', title: '田志宏院长带队赴江苏省产业技术研究院进行产学合作交流', url: 'https://mp.weixin.qq.com/s/9ftEcfuFurtkhpSdGuDirw', date: '2024' },
-  { source: '广州大学网络空间安全学院', title: '田志宏副校长带队赴国家电网中国电科院开展技术交流 共谋能源网络安全合作新篇章', url: 'https://mp.weixin.qq.com/s/t-NACXa5SJEdGnt2nmUdXw', date: '2024' },
-  { source: '广州大学网络空间安全学院', title: '我院鲁辉教授受邀参加"产学协同育人与创新论坛"并做主题报告', url: 'https://mp.weixin.qq.com/s/3jOC-cpGLFM6qSeJAui_qw', date: '2024' },
-  { source: '广州大学网络空间安全学院', title: '我院鲁辉教授受邀给广西网络安全业务专题研修班授课', url: 'https://mp.weixin.qq.com/s/9J_Xbil-n-7gPKYCPbnznQ', date: '2024' },
-  { source: '中国蓝新闻', title: '携手共进开新局｜优势互补产业共振 浙粤携手发展新质生产力', url: 'https://wap.cztv.com/articles/index.html?pubId=2219278', date: '2024' },
-  { source: '广州大学网络空间安全学院', title: '我院鲁辉教授受邀参加粤港澳高校联盟第四届研究生教育联盟论坛', url: 'https://mp.weixin.qq.com/s/oOHKnH0w2lOv9pI5PTQpmQ', date: '2023' },
-  { source: '36氪', title: '网络空间安全人才如何破题', url: 'https://36kr.com/p/1724559998977', date: '2022' },
-  { source: '腾讯安全', title: 'Top20战队决出！@腾讯云黑客松智能渗透挑战赛', url: 'https://mp.weixin.qq.com/s/FeWpPnezFR8__VfMA3Ev5A', date: '2022' },
-  { source: '中国信息安全', title: '专题·网络靶场 | 基于网络靶场的"学练赛讲"一体化网络安全教学创新实践', url: 'https://mp.weixin.qq.com/s/9gJ8gnb1UWqCfLUOkmrCYQ', date: '2021' },
-  { source: '广东教育头条', title: '如何培养"懂防御会攻击"的新人才？且看广大"方班"', url: 'https://static.nfapp.southcn.com/content/201912/23/c2921672.html', date: '2019-12' },
-  { source: '中国教育在线', title: '广州大学"方滨兴班"：服务网络强国建设 培养网络安全人才', url: 'https://guangdong.eol.cn/guaungdongxiaoyuan/201912/t20191220_1700132.shtml', date: '2019-12' },
-]
+const { events, medias } = eventsData
 
 const tagColors = {
   paper: 'bg-blue-50 text-blue-700',

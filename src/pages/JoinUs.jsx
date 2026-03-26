@@ -1,3 +1,5 @@
+import joinusData from '../data/joinus.json'
+
 export default function JoinUs() {
   return (
     <div className="page-container">
@@ -17,41 +19,7 @@ export default function JoinUs() {
       <section className="mb-12">
         <h2 className="text-lg font-semibold text-gray-800 mb-5">招募方向</h2>
         <div className="grid sm:grid-cols-3 gap-5">
-          {[
-            {
-              title: '博士研究生',
-              badge: '全年招募',
-              color: 'primary',
-              items: [
-                '全日制普通高校本科毕业或硕士在读/毕业',
-                '对网络安全科研有浓厚兴趣',
-                '具备扎实的编程与数学基础',
-                '有相关竞赛经历或科研经验优先',
-              ],
-            },
-            {
-              title: '硕士研究生',
-              badge: '每年招募',
-              color: 'teal',
-              items: [
-                '通过广州大学硕士研究生招生考试',
-                '对信息安全领域有持续热情',
-                '有 CTF 或编程竞赛经验者优先',
-                '本科期间有科研/项目经历者优先',
-              ],
-            },
-            {
-              title: '本科生',
-              badge: '长期开放',
-              color: 'amber',
-              items: [
-                '广州大学在校本科生',
-                '有基础编程能力（Python / C / C++）',
-                '愿意投入时间参与科研项目',
-                '有意向报考本组研究生优先',
-              ],
-            },
-          ].map(({ title, badge, color, items }) => (
+          {joinusData.positions.map(({ title, badge, color, items }) => (
             <div key={title} className="card flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <h3 className="font-semibold text-gray-900 text-sm">{title}</h3>
@@ -82,12 +50,7 @@ export default function JoinUs() {
       <section className="mb-12">
         <h2 className="text-lg font-semibold text-gray-800 mb-5">我们能提供什么</h2>
         <div className="grid sm:grid-cols-2 gap-4">
-          {[
-            { icon: '🎓', title: '系统培养', desc: '从科研思维到论文写作，导师全程指导，定期组内学术讨论。' },
-            { icon: '🔬', title: '前沿课题', desc: '参与国家级、省部级科研项目，接触业界前沿研究方向。' },
-            { icon: '🏆', title: '竞赛支持', desc: '全力支持参加 CTF、网络安全竞赛，提供培训与备赛资源。' },
-            { icon: '🤝', title: '广泛合作', desc: '与国内顶尖高校、知名安全公司建立合作，提供实习推荐机会。' },
-          ].map(({ icon, title, desc }) => (
+          {joinusData.benefits.map(({ icon, title, desc }) => (
             <div key={title} className="card flex items-start gap-3">
               <span className="text-2xl leading-none">{icon}</span>
               <div>
