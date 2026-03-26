@@ -2,8 +2,7 @@ backend:
   name: github
   repo: GZHU-BinX/GZHU-BinX.github.io
   branch: main
-  # TODO: 将下面的 your-site-name.netlify.app 替换为你在 Netlify 上创建的站点域名
-  site_domain: https://zingy-palmier-0bed72.netlify.app
+  site_domain: zingy-palmier-0bed72.netlify.app
   base_url: https://api.netlify.com
   auth_endpoint: /auth
 
