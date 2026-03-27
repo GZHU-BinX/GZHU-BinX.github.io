@@ -1,6 +1,6 @@
 {
   "papers": [
-    { "year": 2025, "venue": "BIG DATA MINING AND ANALYTICS", "title": "COAPT：Bridging Semantic-Operational Divide in Autonomous Penetration Testing Through LLM-Driven Cognitive Planning", "authors": "鲁辉、陈艳利、何郁郁等", "dir": "智能渗透" },
+    { "year": 2025, "venue": "BIG DATA MINING AND ANALYTICS", "title": "COAPT：Bridging Semantic-Operational Divide in Autonomous Penetration Testing Through LLM-Driven Cognitive Planning", "authors": "张浩楠、鲁辉、陈艳利、何郁郁等", "dir": "智能渗透" },
     { "year": 2025, "venue": "IEEE DSC 2025", "title": "The Pursuer of Light: Exploration and Evolution of DAST Technology in XSS Vulnerability Detection", "authors": "鲁辉、王志刚、卢泽丰、陈艳利、何郁郁等", "dir": "智能渗透" },
     { "year": 2025, "venue": "IEEE DSC 2025", "title": "An Arms Race in the Inbox: A Systematic Review of Phishing Generation and the Rise of LLMs", "authors": "陈艳利、何郁郁、鲁辉、王志刚等", "dir": "大模型安全" },
     { "year": 2025, "venue": "IEEE DSC 2025", "title": "The Dawn of Intelligent Fuzzing: Exploring the Application of Large Language Models in Fuzzing", "authors": "卢泽丰、陈艳利、何郁郁、王志刚、鲁辉等", "dir": "智能漏洞挖掘" },

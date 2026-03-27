@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import achievementsData from '../data/achievements.json'
+import ScrollReveal from '../components/ScrollReveal'
 
 const { papers, eduPapers, projects, awards, vulns } = achievementsData
 
-// ─── 辅助函数 ─────────────────────────────────────────────────────────────────
 function awardBadgeClass(award) {
   if (/特等|金奖/.test(award)) return 'bg-amber-100 text-amber-800 border border-amber-200'
   if (/一等/.test(award)) return 'bg-primary-100 text-primary-800 border border-primary-200'
@@ -28,9 +28,9 @@ function YearFilter({ years, selected, onChange }) {
     <div className="flex gap-2 flex-wrap">
       {years.map(y => (
         <button key={y} onClick={() => onChange(y)}
-          className={`px-3 py-1 text-xs font-medium rounded-full border transition-colors ${
+          className={`px-3 py-1 text-xs font-medium rounded-full border transition-all duration-200 ${
             selected === y
-              ? 'bg-primary-600 text-white border-primary-600'
+              ? 'bg-primary-600 text-white border-primary-600 shadow-sm shadow-primary-600/20'
               : 'bg-white text-gray-600 border-gray-200 hover:border-primary-400 hover:text-primary-600'
           }`}>{y}</button>
       ))}
@@ -77,19 +77,25 @@ export default function Achievements() {
 
   return (
     <div className="page-container">
-      <h1 className="section-title">学术成果</h1>
-      <div className="section-divider" />
+      {/* 装饰性标题区域 */}
+      <div className="relative mb-8">
+        <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary-50 rounded-full blur-3xl opacity-50" />
+        <div className="relative">
+          <h1 className="section-title">学术成果</h1>
+          <div className="section-divider" />
+        </div>
+      </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 flex-wrap">
+      <div className="flex gap-1 bg-gray-100/80 rounded-xl p-1 mb-8 flex-wrap backdrop-blur-sm">
         {TABS.map(({ key, label, count }) => (
           <button key={key} onClick={() => setTab(key)}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-1.5 ${
               tab === key ? 'bg-white text-primary-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'
             }`}>
             {label}
             {count !== null && (
-              <span className={`text-xs rounded-full px-1.5 py-0.5 ${
+              <span className={`text-xs rounded-full px-1.5 py-0.5 transition-colors ${
                 tab === key ? 'bg-primary-100 text-primary-700' : 'bg-gray-200 text-gray-500'
               }`}>{count}</span>
             )}
@@ -97,50 +103,51 @@ export default function Achievements() {
         ))}
       </div>
 
-      {/* ── 学术论文 ── */}
+      {/* 学术论文 */}
       {tab === 'papers' && (
         <section>
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
             <span className="text-sm text-gray-500">{filteredPapers.length} 篇</span>
             <YearFilter years={paperYears} selected={paperYear} onChange={setPaperYear} />
           </div>
-          {/* 研究方向筛选 */}
           <div className="flex gap-2 flex-wrap mb-6">
             {DIRS.map(d => (
               <button key={d} onClick={() => setDirFilter(d)}
-                className={`px-3 py-1 text-xs font-medium rounded-full border transition-colors ${
+                className={`px-3 py-1 text-xs font-medium rounded-full border transition-all duration-200 ${
                   dirFilter === d
-                    ? 'bg-primary-600 text-white border-primary-600'
+                    ? 'bg-primary-600 text-white border-primary-600 shadow-sm shadow-primary-600/20'
                     : 'bg-white text-gray-600 border-gray-200 hover:border-primary-400 hover:text-primary-600'
                 }`}>{d}</button>
             ))}
           </div>
           <div className="space-y-3">
             {filteredPapers.map((p, i) => (
-              <div key={i} className="card py-4">
-                <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary-50 text-primary-600 text-xs font-bold flex items-center justify-center mt-0.5">
-                    {i + 1}
-                  </span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <span className="text-xs font-medium px-2 py-0.5 bg-primary-100 text-primary-700 rounded">{p.venue}</span>
-                      <span className="text-xs text-gray-400">{p.year}</span>
-                      {p.dir && (
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${dirColors[p.dir]}`}>{p.dir}</span>
-                      )}
+              <ScrollReveal key={i} delay={Math.min(i * 40, 300)}>
+                <div className="card card-hover py-4">
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary-50 text-primary-600 text-xs font-bold flex items-center justify-center mt-0.5">
+                      {i + 1}
+                    </span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <span className="text-xs font-medium px-2 py-0.5 bg-primary-100 text-primary-700 rounded">{p.venue}</span>
+                        <span className="text-xs text-gray-400">{p.year}</span>
+                        {p.dir && (
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${dirColors[p.dir]}`}>{p.dir}</span>
+                        )}
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 leading-snug mb-0.5">{p.title}</p>
+                      <p className="text-xs text-gray-500">作者：{p.authors}</p>
                     </div>
-                    <p className="text-sm font-medium text-gray-900 leading-snug mb-0.5">{p.title}</p>
-                    <p className="text-xs text-gray-500">作者：{p.authors}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
       )}
 
-      {/* ── 教改论文 ── */}
+      {/* 教改论文 */}
       {tab === 'edu' && (
         <section>
           <div className="mb-6">
@@ -148,25 +155,27 @@ export default function Achievements() {
           </div>
           <div className="space-y-3">
             {eduPapers.map((p, i) => (
-              <div key={i} className="card py-4">
-                <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-50 text-teal-600 text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <span className="text-xs font-medium px-2 py-0.5 bg-teal-100 text-teal-700 rounded">{p.venue}</span>
-                      <span className="text-xs text-gray-400">{p.year}</span>
+              <ScrollReveal key={i} delay={i * 60}>
+                <div className="card card-hover py-4">
+                  <div className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-50 text-teal-600 text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <span className="text-xs font-medium px-2 py-0.5 bg-teal-100 text-teal-700 rounded">{p.venue}</span>
+                        <span className="text-xs text-gray-400">{p.year}</span>
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 leading-snug mb-0.5">{p.title}</p>
+                      <p className="text-xs text-gray-500">作者：{p.authors}</p>
                     </div>
-                    <p className="text-sm font-medium text-gray-900 leading-snug mb-0.5">{p.title}</p>
-                    <p className="text-xs text-gray-500">作者：{p.authors}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
       )}
 
-      {/* ── 承担项目 ── */}
+      {/* 承担项目 */}
       {tab === 'projects' && (
         <section>
           {projects.length === 0 ? (
@@ -204,7 +213,7 @@ export default function Achievements() {
         </section>
       )}
 
-      {/* ── 竞赛获奖 ── */}
+      {/* 竞赛获奖 */}
       {tab === 'awards' && (
         <section>
           <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
@@ -213,59 +222,68 @@ export default function Achievements() {
           </div>
           <div className="space-y-3">
             {filteredAwards.map((item, idx) => (
-              <div key={idx} className="card py-4">
-                <div className="flex items-start justify-between gap-3 flex-wrap sm:flex-nowrap">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-gray-900 text-sm leading-snug mb-1.5">{item.competition}</h3>
-                    <p className="text-xs text-gray-500 mb-1"><span className="text-gray-400">获奖学生：</span>{item.students}</p>
-                    {item.organizer && <p className="text-xs text-gray-400 leading-relaxed"><span>主办：</span>{item.organizer}</p>}
-                  </div>
-                  <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${awardBadgeClass(item.award)}`}>{item.award}</span>
-                    <div className="flex gap-1.5">
-                      {item.level && <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${levelBadgeClass(item.level)}`}>{item.level}</span>}
-                      <span className="text-xs text-gray-400">{item.time}</span>
+              <ScrollReveal key={idx} delay={Math.min(idx * 40, 300)}>
+                <div className="card card-hover py-4">
+                  <div className="flex items-start justify-between gap-3 flex-wrap sm:flex-nowrap">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-gray-900 text-sm leading-snug mb-1.5">{item.competition}</h3>
+                      <p className="text-xs text-gray-500 mb-1"><span className="text-gray-400">获奖学生：</span>{item.students}</p>
+                      {item.organizer && <p className="text-xs text-gray-400 leading-relaxed"><span>主办：</span>{item.organizer}</p>}
+                    </div>
+                    <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                      <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${awardBadgeClass(item.award)}`}>{item.award}</span>
+                      <div className="flex gap-1.5">
+                        {item.level && <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${levelBadgeClass(item.level)}`}>{item.level}</span>}
+                        <span className="text-xs text-gray-400">{item.time}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
       )}
 
-      {/* ── 漏洞披露 ── */}
+      {/* 漏洞披露 */}
       {tab === 'vulns' && (
         <section>
-          <div className="mb-6 flex items-start justify-between flex-wrap gap-3">
-            <div>
-              <p className="text-sm text-gray-600 mb-1">课题组累计披露主流操作系统和软件漏洞 <strong>{vulns.length}</strong> 个（CVE/CNVD）</p>
-              <p className="text-xs text-gray-400">包括微软 Edge 浏览器等主流软件漏洞，获微软致谢并入选微软全球最有价值安全研究员（2021）</p>
+          <ScrollReveal>
+            <div className="mb-6 flex items-start justify-between flex-wrap gap-3">
+              <div>
+                <p className="text-sm text-gray-600 mb-1">课题组累计披露主流操作系统和软件漏洞 <strong>{vulns.length}</strong> 个（CVE/CNVD）</p>
+                <p className="text-xs text-gray-400">包括微软 Edge 浏览器等主流软件漏洞，获微软致谢并入选微软全球最有价值安全研究员（2021）</p>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-xs px-2 py-1 rounded border bg-red-50 text-red-700 border-red-200 font-medium">CVE</span>
+                <span className="text-xs px-2 py-1 rounded border bg-blue-50 text-blue-700 border-blue-200 font-medium">CNVD</span>
+              </div>
             </div>
-            <div className="flex gap-2">
-              <span className="text-xs px-2 py-1 rounded border bg-red-50 text-red-700 border-red-200 font-medium">CVE</span>
-              <span className="text-xs px-2 py-1 rounded border bg-blue-50 text-blue-700 border-blue-200 font-medium">CNVD</span>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+              <p className="text-sm text-amber-800 font-medium mb-1">典型成果</p>
+              <ul className="text-xs text-amber-700 space-y-1">
+                <li>• 学生温志华（鲁辉指导）发现微软Edge浏览器漏洞，获微软致谢并入选<strong>微软全球最有价值安全研究员（2021 MSRC MVR）</strong></li>
+                <li>• 鲁辉等人发现XStream漏洞，被360评为 <strong>9.8分（满分10）</strong>，威胁等级"严重"</li>
+              </ul>
             </div>
-          </div>
-          {/* 特别标注 */}
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-amber-800 font-medium mb-1">🏆 典型成果</p>
-            <ul className="text-xs text-amber-700 space-y-1">
-              <li>• 学生温志华（鲁辉指导）发现微软Edge浏览器漏洞，获微软致谢并入选<strong>微软全球最有价值安全研究员（2021 MSRC MVR）</strong></li>
-              <li>• 鲁辉等人发现XStream漏洞，被360评为 <strong>9.8分（满分10）</strong>，威胁等级"严重"</li>
-            </ul>
-          </div>
+          </ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[...vulns].sort((a, b) => b.date.localeCompare(a.date)).map((v, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-lg px-4 py-3 hover:shadow-sm transition-shadow">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded border ${vulnTypeClass(v.id)}`}>{v.id}</span>
-                  <span className="text-xs text-gray-400">{v.date}</span>
+              <ScrollReveal key={i} delay={Math.min(i * 30, 300)}>
+                <div className={`bg-white border border-gray-100 rounded-lg px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 cursor-default ${
+                  v.id.startsWith('CVE-') ? 'glow-border-red' : 'glow-border-blue'
+                }`}>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded border ${vulnTypeClass(v.id)}`}>{v.id}</span>
+                    <span className="text-xs text-gray-400">{v.date}</span>
+                  </div>
+                  {v.contributors !== '—' && (
+                    <p className="text-xs text-gray-500 leading-relaxed">{v.contributors}</p>
+                  )}
                 </div>
-                {v.contributors !== '—' && (
-                  <p className="text-xs text-gray-500 leading-relaxed">{v.contributors}</p>
-                )}
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>

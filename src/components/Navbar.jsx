@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const navItems = [
   { path: '/', label: '课题组简介', end: true },
@@ -13,14 +13,24 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      scrolled
+        ? 'bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm'
+        : 'bg-white border-b border-gray-100'
+    }`}>
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between h-14">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5">
-            <div className="w-7 h-7 bg-primary-600 rounded flex items-center justify-center flex-shrink-0">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-7 h-7 bg-gradient-to-br from-primary-600 to-primary-800 rounded flex items-center justify-center flex-shrink-0 group-hover:shadow-lg group-hover:shadow-primary-600/30 transition-all duration-300">
               <span className="text-white font-bold text-xs">IA</span>
             </div>
             <div className="hidden sm:block">
@@ -29,7 +39,6 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map(({ path, label, end }) => (
               <NavLink
@@ -45,9 +54,8 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-1.5 text-gray-500 hover:text-gray-900"
+            className="md:hidden p-1.5 text-gray-500 hover:text-gray-900 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="菜单"
           >
@@ -64,9 +72,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white">
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+        menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <div className="border-t border-gray-100 bg-white/95 backdrop-blur-lg">
           <div className="max-w-5xl mx-auto px-6 py-3 flex flex-col gap-1">
             {navItems.map(({ path, label, end }) => (
               <NavLink
@@ -87,7 +96,7 @@ export default function Navbar() {
             ))}
           </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }
