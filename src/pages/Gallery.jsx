@@ -9,13 +9,13 @@ const activities = galleryData.activities.map(a => ({
   images: galleryImages[a.imageDir] || [],
 }))
 
-const CATEGORIES = ['全部', '团建出游', '学术聚餐', '体育运动', '节日庆祝']
+const CATEGORIES = ['全部', '团建出游', '学术聚餐', '点滴', '竞赛']
 
 const categoryColors = {
   '团建出游': 'bg-emerald-50 text-emerald-700 border-emerald-200',
   '学术聚餐': 'bg-amber-50 text-amber-700 border-amber-200',
-  '体育运动': 'bg-blue-50 text-blue-700 border-blue-200',
-  '节日庆祝': 'bg-rose-50 text-rose-700 border-rose-200',
+  '点滴': 'bg-blue-50 text-blue-700 border-blue-200',
+  '竞赛': 'bg-rose-50 text-rose-700 border-rose-200',
 }
 
 // ─── Lightbox 组件 ────────────────────────────────────────────────────────────
