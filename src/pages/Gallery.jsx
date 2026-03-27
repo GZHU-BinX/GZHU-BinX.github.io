@@ -1,7 +1,13 @@
 import { useState, useEffect, useCallback } from 'react'
 import galleryData from '../data/gallery.json'
+import galleryImages from 'virtual:gallery-images'
 
-const { activities } = galleryData
+// 根据 imageDir 自动匹配扫描到的图片列表
+const activities = galleryData.activities.map(a => ({
+  ...a,
+  cover: `${a.imageDir}/${a.cover}`,
+  images: galleryImages[a.imageDir] || [],
+}))
 
 const CATEGORIES = ['全部', '团建出游', '学术聚餐', '体育运动', '节日庆祝']
 
