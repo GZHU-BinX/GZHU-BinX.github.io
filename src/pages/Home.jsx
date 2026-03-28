@@ -88,7 +88,7 @@ export default function Home() {
               <div className="space-y-4 text-gray-600 leading-relaxed text-sm">
                 <p>
                   智能攻防课题组（IAD Lab）隶属于<strong className="text-gray-800">广州大学网络空间先进技术研究院</strong>，由<strong className="text-gray-800">鲁辉教授</strong>领衔。
-                  依托广东省新型基础设施网络安全重点实验室，专注于人工智能与网络安全交叉领域的前沿研究。
+                  依托广东新型基础设施网络安全重点实验室，专注于人工智能与网络安全交叉领域的前沿研究。
                 </p>
                 <p>
                   课题组围绕<strong className="text-gray-800">智能渗透</strong>、<strong className="text-gray-800">智能漏洞挖掘</strong>与<strong className="text-gray-800">大模型安全</strong>三大方向开展系统性研究，
@@ -143,7 +143,7 @@ export default function Home() {
                     <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">教授 / 博士生导师</span>
                     <span className="text-xs bg-primary-50 text-primary-700 px-2 py-0.5 rounded font-medium">国家级人才</span>
                   </div>
-                 <p className="text-xs text-gray-400 mb-3">广州大学网络空间先进技术研究院 院长 · 广东省新型基础设施网络安全重点实验室 主任 · 黄埔方班班主任 · 新安盟秘书长</p>
+                 <p className="text-xs text-gray-400 mb-3">广州大学网络空间先进技术研究院 院长 · 广东新型基础设施网络安全重点实验室 主任 · 黄埔方班班主任 · 新安盟秘书长</p>
                   <p className="text-sm text-gray-600 leading-relaxed mb-4">
                     主要研究智能网络攻防、大模型安全，已发表高水平论文100余篇，授权专利50余项，获IEEE GlobalCom 2023最佳论文奖。
                     主持设计"蜜洞"主动防御技术，成功应用于北京冬奥会、杭州亚运会、成都大运会、哈尔滨亚冬会等重大安保活动；
