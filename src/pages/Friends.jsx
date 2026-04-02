@@ -9,6 +9,9 @@ export default function Friends() {
       {/* 页头横幅 */}
       <div className="page-header">
         <div className="page-header-grid" />
+        <div className="absolute top-3 right-14 opacity-[0.05] hidden sm:block">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10,30 L25,30 L30,15 L35,30 L50,30" stroke="white" strokeWidth="0.5"/><path d="M10,45 L25,45 L30,35 L35,45 L50,45" stroke="white" strokeWidth="0.5"/><circle cx="30" cy="15" r="3" stroke="white" strokeWidth="0.5" fill="none"/></svg>
+        </div>
         <div className="relative max-w-5xl mx-auto px-6 py-10">
           <h1 className="text-2xl font-bold text-white mb-1">友情链接</h1>
           <p className="text-sm text-blue-200/60">Friendly Links</p>
@@ -21,8 +24,7 @@ export default function Friends() {
         {friends.map(({ category, links }, catIdx) => (
           <section key={category}>
             <ScrollReveal delay={catIdx * 80}>
-              <h2 className="text-base font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 bg-primary-500 rounded-full inline-block" />
+              <h2 className="sub-section-title mb-4">
                 {category}
               </h2>
             </ScrollReveal>
@@ -33,7 +35,7 @@ export default function Friends() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-lg shadow-sm hover:border-primary-300 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                    className="group flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:border-primary-300 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                   >
                     <div className="w-8 h-8 bg-primary-50 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-primary-100 group-hover:rotate-6 transition-all duration-300">
                       <svg className="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

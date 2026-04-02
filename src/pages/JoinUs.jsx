@@ -23,12 +23,13 @@ export default function JoinUs() {
       {/* 招募岗位 */}
       <section className="mb-12">
         <ScrollReveal>
-          <h2 className="text-lg font-semibold text-gray-800 mb-5">招募方向</h2>
+          <h2 className="sub-section-title">招募方向</h2>
         </ScrollReveal>
         <div className="grid sm:grid-cols-3 gap-5">
           {joinusData.positions.map(({ title, badge, color, items }, idx) => (
             <ScrollReveal key={title} delay={idx * 100}>
-              <div className="card card-hover flex flex-col h-full">
+              <div className="card card-hover flex flex-col h-full relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-t-xl" />
                 <div className="flex items-center gap-2 mb-4">
                   <h3 className="font-semibold text-gray-900 text-sm">{title}</h3>
                   <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
@@ -58,7 +59,7 @@ export default function JoinUs() {
       {/* 课题组能提供什么 */}
       <section className="mb-12">
         <ScrollReveal>
-          <h2 className="text-lg font-semibold text-gray-800 mb-5">我们能提供什么</h2>
+          <h2 className="sub-section-title">我们能提供什么</h2>
         </ScrollReveal>
         <div className="grid sm:grid-cols-2 gap-4">
           {joinusData.benefits.map(({ icon, title, desc }, idx) => (
@@ -78,7 +79,7 @@ export default function JoinUs() {
       {/* 联系方式 */}
       <section>
         <ScrollReveal>
-          <h2 className="text-lg font-semibold text-gray-800 mb-5">联系方式</h2>
+          <h2 className="sub-section-title">联系方式</h2>
         </ScrollReveal>
         <ScrollReveal delay={100}>
           <div className="card max-w-lg">

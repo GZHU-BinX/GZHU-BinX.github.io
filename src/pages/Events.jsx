@@ -22,6 +22,9 @@ export default function Events() {
       {/* 页头横幅 */}
       <div className="page-header">
         <div className="page-header-grid" />
+        <div className="absolute bottom-2 right-16 opacity-[0.05] hidden sm:block">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="25" stroke="white" strokeWidth="0.5"/><circle cx="30" cy="30" r="15" stroke="white" strokeWidth="0.5"/><line x1="30" y1="0" x2="30" y2="60" stroke="white" strokeWidth="0.3"/><line x1="0" y1="30" x2="60" y2="30" stroke="white" strokeWidth="0.3"/></svg>
+        </div>
         <div className="relative max-w-5xl mx-auto px-6 py-10">
           <h1 className="text-2xl font-bold text-white mb-1">课题组动态</h1>
           <p className="text-sm text-blue-200/60">News & Events</p>

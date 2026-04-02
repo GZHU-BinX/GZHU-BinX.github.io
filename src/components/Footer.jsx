@@ -10,18 +10,26 @@ export default function Footer() {
         backgroundSize: '32px 32px',
       }} />
 
+      {/* IAD 底纹装饰 */}
+      <div className="absolute bottom-4 right-8 select-none pointer-events-none">
+        <span className="text-[6rem] font-black text-white/[0.015] leading-none tracking-tighter">IAD</span>
+      </div>
+
       <div className="h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
       <div className="relative max-w-5xl mx-auto px-6 py-10">
         <div className="flex flex-col sm:flex-row justify-between items-start gap-8">
           <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-700 rounded flex items-center justify-center">
-                <span className="text-white font-bold" style={{fontSize: '9px'}}>IA</span>
+            <div className="flex items-center gap-2.5 mb-3 group">
+              <div className="w-7 h-7 bg-gradient-to-br from-primary-500 to-primary-700 rounded-md flex items-center justify-center shadow-lg shadow-primary-600/10">
+                <span className="text-white font-bold" style={{fontSize: '10px'}}>IA</span>
               </div>
-              <span className="text-sm font-medium text-white">智能攻防课题组</span>
+              <div>
+                <span className="text-sm font-semibold text-white block leading-tight">智能攻防课题组</span>
+                <span className="text-xs text-gray-500 leading-tight">IAD Lab</span>
+              </div>
             </div>
-            <p className="text-xs text-gray-400 leading-relaxed">广州大学网络空间安全学院</p>
-            <p className="text-xs text-gray-500 mt-1">Intelligent Attack and Defense Lab</p>
+            <p className="text-xs text-gray-400 leading-relaxed mt-2">广州大学网络空间安全学院</p>
+            <p className="text-xs text-gray-500 mt-0.5">Intelligent Attack and Defense Lab</p>
           </div>
           <div className="flex gap-10 text-xs">
             <div className="space-y-2">
@@ -58,9 +66,21 @@ export default function Footer() {
         <div className="mt-8 pt-6 border-t border-gray-800 relative">
           {/* 微光装饰 */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" />
-          <p className="text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} 智能攻防课题组 &middot; 广州大学网络空间安全学院
-          </p>
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <p className="text-xs text-gray-500">
+              &copy; {new Date().getFullYear()} 智能攻防课题组 &middot; 广州大学网络空间安全学院
+            </p>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="text-xs text-gray-500 hover:text-primary-400 transition-colors flex items-center gap-1 group"
+              aria-label="回到顶部"
+            >
+              <svg className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+              回到顶部
+            </button>
+          </div>
         </div>
       </div>
     </footer>

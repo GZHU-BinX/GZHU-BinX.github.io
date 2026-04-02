@@ -80,6 +80,9 @@ export default function Achievements() {
       {/* 页头横幅 */}
       <div className="page-header">
         <div className="page-header-grid" />
+        <div className="absolute top-3 right-10 opacity-[0.06] hidden sm:block">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><polygon points="40,5 70,22 70,58 40,75 10,58 10,22" stroke="white" strokeWidth="0.5" fill="none"/><polygon points="40,15 58,25 58,55 40,65 22,55 22,25" stroke="white" strokeWidth="0.5" fill="none"/></svg>
+        </div>
         <div className="relative max-w-5xl mx-auto px-6 py-10">
           <h1 className="text-2xl font-bold text-white mb-1">学术成果</h1>
           <p className="text-sm text-blue-200/60">Academic Achievements</p>
@@ -181,27 +184,27 @@ export default function Achievements() {
       {tab === 'projects' && (
         <section>
           {projects.length === 0 ? (
-            <div className="card text-center py-14 text-gray-400">
+            <div className="empty-state">
               <p className="text-sm">项目信息待补充</p>
             </div>
           ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div className="table-container">
+            <table>
               <thead>
-                <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">项目名称</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">来源</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">周期</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">状态</th>
+                <tr>
+                  <th>项目名称</th>
+                  <th>来源</th>
+                  <th>周期</th>
+                  <th>状态</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody>
                 {projects.map((proj, idx) => (
-                  <tr key={idx} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-4 py-3.5 text-gray-800 font-medium">{proj.title}</td>
-                    <td className="px-4 py-3.5 text-gray-500">{proj.source}</td>
-                    <td className="px-4 py-3.5 text-gray-500 whitespace-nowrap">{proj.period}</td>
-                    <td className="px-4 py-3.5">
+                  <tr key={idx}>
+                    <td className="text-gray-800 font-medium">{proj.title}</td>
+                    <td className="text-gray-500">{proj.source}</td>
+                    <td className="text-gray-500 whitespace-nowrap">{proj.period}</td>
+                    <td>
                       <span className={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full ${
                         proj.status === '在研' ? 'bg-green-50 text-green-700' : 'bg-gray-100 text-gray-500'
                       }`}>{proj.status}</span>
@@ -274,7 +277,7 @@ export default function Achievements() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[...vulns].sort((a, b) => b.date.localeCompare(a.date)).map((v, i) => (
               <ScrollReveal key={i} delay={Math.min(i * 30, 300)}>
-                <div className={`bg-white border border-gray-100 rounded-lg px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 cursor-default ${
+                <div className={`bg-white border border-gray-100 rounded-xl px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 cursor-default shadow-sm ${
                   v.id.startsWith('CVE-') ? 'glow-border-red' : 'glow-border-blue'
                 }`}>
                   <div className="flex items-center justify-between mb-1.5">

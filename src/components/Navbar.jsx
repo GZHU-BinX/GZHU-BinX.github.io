@@ -24,18 +24,18 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
       scrolled
-        ? 'bg-white/80 backdrop-blur-xl border-b border-gray-200/50 shadow-sm'
+        ? 'bg-white/85 backdrop-blur-xl border-b border-gray-200/50 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.02)]'
         : 'bg-white border-b border-gray-100'
     }`}>
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between h-14">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-7 h-7 bg-gradient-to-br from-primary-600 to-primary-800 rounded flex items-center justify-center flex-shrink-0 group-hover:shadow-lg group-hover:shadow-primary-600/30 transition-all duration-300">
+            <div className="w-7 h-7 bg-gradient-to-br from-primary-600 to-primary-800 rounded flex items-center justify-center flex-shrink-0 group-hover:shadow-lg group-hover:shadow-primary-600/30 group-hover:scale-105 transition-all duration-300">
               <span className="text-white font-bold text-xs">IA</span>
             </div>
             <div className="hidden sm:block">
-              <div className="text-sm font-semibold text-gray-900 leading-tight">智能攻防课题组</div>
-              <div className="text-xs text-gray-400 leading-tight">广州大学网络空间安全学院</div>
+              <div className="text-sm font-semibold text-gray-900 leading-tight group-hover:text-primary-700 transition-colors">智能攻防课题组</div>
+              <div className="text-xs text-gray-400 leading-tight">IAD Lab · 广州大学</div>
             </div>
           </Link>
 

@@ -44,7 +44,7 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
   return (
     <div
       className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-200 ${
-        visible ? 'bg-black/80 backdrop-blur-sm' : 'bg-black/0'
+        visible ? 'bg-black/85 backdrop-blur-md' : 'bg-black/0'
       }`}
       onClick={handleClose}
     >
@@ -57,7 +57,7 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
         <img
           src={images[index]}
           alt=""
-          className="w-full max-h-[80vh] object-contain rounded-lg"
+          className="w-full max-h-[80vh] object-contain rounded-xl shadow-2xl"
         />
         <button
           onClick={handleClose}
@@ -132,6 +132,9 @@ export default function Gallery() {
       {/* 页头横幅 */}
       <div className="page-header">
         <div className="page-header-grid" />
+        <div className="absolute top-4 right-12 opacity-[0.05] hidden sm:block">
+          <svg width="70" height="70" viewBox="0 0 70 70" fill="none"><rect x="5" y="5" width="60" height="60" rx="8" stroke="white" strokeWidth="0.5"/><rect x="15" y="15" width="40" height="40" rx="4" stroke="white" strokeWidth="0.5"/><circle cx="35" cy="35" r="10" stroke="white" strokeWidth="0.5"/></svg>
+        </div>
         <div className="relative max-w-5xl mx-auto px-6 py-10">
           <h1 className="text-2xl font-bold text-white mb-1">团建风采</h1>
           <p className="text-sm text-blue-200/60">Gallery</p>
@@ -216,7 +219,7 @@ export default function Gallery() {
       </div>
 
       {filtered.length === 0 && (
-        <div className="card text-center py-14 text-gray-400">
+        <div className="empty-state">
           <p className="text-sm">暂无该类别的活动记录</p>
         </div>
       )}
