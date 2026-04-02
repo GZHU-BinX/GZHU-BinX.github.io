@@ -51,11 +51,17 @@ function MemberCard({ member, large }) {
 
 export default function Members() {
   return (
-    <div className="page-container">
-      <ScrollReveal>
-        <h1 className="section-title">团队成员</h1>
-        <div className="section-divider" />
-      </ScrollReveal>
+    <div>
+      {/* 页头横幅 */}
+      <div className="page-header">
+        <div className="page-header-grid" />
+        <div className="relative max-w-5xl mx-auto px-6 py-10">
+          <h1 className="text-2xl font-bold text-white mb-1">团队成员</h1>
+          <p className="text-sm text-blue-200/60">Team Members</p>
+        </div>
+      </div>
+
+      <div className="page-container">
 
       {/* 导师 */}
       <section className="mb-12">
@@ -162,6 +168,7 @@ export default function Members() {
           ))}
         </div>
       </section>
+      </div>
     </div>
   )
 }

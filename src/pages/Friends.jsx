@@ -5,11 +5,17 @@ const { friends } = friendsData
 
 export default function Friends() {
   return (
-    <div className="page-container">
-      <ScrollReveal>
-        <h1 className="section-title">友情链接</h1>
-        <div className="section-divider" />
-      </ScrollReveal>
+    <div>
+      {/* 页头横幅 */}
+      <div className="page-header">
+        <div className="page-header-grid" />
+        <div className="relative max-w-5xl mx-auto px-6 py-10">
+          <h1 className="text-2xl font-bold text-white mb-1">友情链接</h1>
+          <p className="text-sm text-blue-200/60">Friendly Links</p>
+        </div>
+      </div>
+
+      <div className="page-container">
 
       <div className="space-y-10">
         {friends.map(({ category, links }, catIdx) => (
@@ -59,6 +65,7 @@ export default function Friends() {
           </a>
         </div>
       </ScrollReveal>
+      </div>
     </div>
   )
 }

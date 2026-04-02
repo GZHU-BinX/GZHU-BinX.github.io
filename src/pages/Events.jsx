@@ -18,11 +18,17 @@ export default function Events() {
   const [tab, setTab] = useState('课题组动态')
 
   return (
-    <div className="page-container">
-      <ScrollReveal>
-        <h1 className="section-title">课题组动态</h1>
-        <div className="section-divider" />
-      </ScrollReveal>
+    <div>
+      {/* 页头横幅 */}
+      <div className="page-header">
+        <div className="page-header-grid" />
+        <div className="relative max-w-5xl mx-auto px-6 py-10">
+          <h1 className="text-2xl font-bold text-white mb-1">课题组动态</h1>
+          <p className="text-sm text-blue-200/60">News & Events</p>
+        </div>
+      </div>
+
+      <div className="page-container">
 
       {/* Tabs */}
       <ScrollReveal delay={100}>
@@ -101,6 +107,7 @@ export default function Events() {
           </div>
         </div>
       )}
+      </div>
     </div>
   )
 }

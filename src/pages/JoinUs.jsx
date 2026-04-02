@@ -3,26 +3,22 @@ import ScrollReveal from '../components/ScrollReveal'
 
 export default function JoinUs() {
   return (
-    <div className="page-container">
-      <ScrollReveal>
-        <h1 className="section-title">加入我们</h1>
-        <div className="section-divider" />
-      </ScrollReveal>
-
-      {/* 欢迎语 */}
-      <ScrollReveal delay={100}>
-        <div className="relative overflow-hidden bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 rounded-2xl p-8 mb-10 shadow-lg shadow-primary-600/20">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-10 w-24 h-24 bg-accent-500/10 rounded-full translate-y-1/2" />
-          <div className="relative">
-            <h2 className="text-lg font-bold text-white mb-2">欢迎加入智能攻防课题组</h2>
-            <p className="text-sm text-blue-100/90 leading-relaxed max-w-xl">
-              我们长期招募对网络安全与人工智能方向充满热情的优秀学生。无论您是本科生、硕士生还是博士生，
-              只要你热爱技术、勇于探索，都欢迎与我们联系。
-            </p>
-          </div>
+    <div>
+      {/* 页头横幅 - 合并原欢迎语 */}
+      <div className="page-header">
+        <div className="page-header-grid" />
+        <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-10 w-24 h-24 bg-accent-500/10 rounded-full translate-y-1/2" />
+        <div className="relative max-w-5xl mx-auto px-6 py-10">
+          <h1 className="text-2xl font-bold text-white mb-2">加入我们</h1>
+          <p className="text-sm text-blue-100/80 leading-relaxed max-w-xl">
+            我们长期招募对网络安全与人工智能方向充满热情的优秀学生。无论您是本科生、硕士生还是博士生，
+            只要你热爱技术、勇于探索，都欢迎与我们联系。
+          </p>
         </div>
-      </ScrollReveal>
+      </div>
+
+      <div className="page-container">
 
       {/* 招募岗位 */}
       <section className="mb-12">
@@ -121,6 +117,7 @@ export default function JoinUs() {
           </div>
         </ScrollReveal>
       </section>
+      </div>
     </div>
   )
 }

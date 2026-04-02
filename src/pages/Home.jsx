@@ -29,9 +29,11 @@ const recentNews = homeData.recentNews
 function StatItem({ num, label }) {
   const { ref, display } = useCountUp(num)
   return (
-    <div ref={ref} className="text-center py-8">
-      <div className="text-2xl font-bold text-primary-600 mb-1">{display}</div>
-      <div className="text-xs text-gray-400">{label}</div>
+    <div ref={ref} className="text-center py-8 relative">
+      {/* 装饰光点 */}
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-gradient-to-r from-primary-400/0 via-accent-400/60 to-primary-400/0" />
+      <div className="stat-number mb-1">{display}</div>
+      <div className="text-xs text-blue-300/60">{label}</div>
     </div>
   )
 }
@@ -42,16 +44,69 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-bg relative overflow-hidden">
         <div className="absolute inset-0 hero-grid" />
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-glow-pulse" />
-        <div className="absolute bottom-10 left-20 w-56 h-56 bg-accent-500/10 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
+
+        {/* 科技装饰元素 - 六边形 + 电路线条风 SVG */}
+        <div className="absolute top-10 right-10 opacity-[0.07] animate-float">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            {/* 六边形网格 */}
+            <polygon points="100,10 170,50 170,130 100,170 30,130 30,50" stroke="white" strokeWidth="1" fill="none" />
+            <polygon points="100,30 150,55 150,115 100,140 50,115 50,55" stroke="white" strokeWidth="0.5" fill="none" />
+            <polygon points="100,50 130,65 130,105 100,120 70,105 70,65" stroke="white" strokeWidth="0.5" fill="none" />
+            {/* 连接线条 */}
+            <line x1="100" y1="10" x2="100" y2="0" stroke="white" strokeWidth="0.5" />
+            <line x1="170" y1="50" x2="185" y2="42" stroke="white" strokeWidth="0.5" />
+            <line x1="170" y1="130" x2="185" y2="138" stroke="white" strokeWidth="0.5" />
+            <line x1="30" y1="50" x2="15" y2="42" stroke="white" strokeWidth="0.5" />
+            <line x1="30" y1="130" x2="15" y2="138" stroke="white" strokeWidth="0.5" />
+            {/* 节点 */}
+            <circle cx="100" cy="10" r="2" fill="white" />
+            <circle cx="170" cy="50" r="2" fill="white" />
+            <circle cx="170" cy="130" r="2" fill="white" />
+            <circle cx="30" cy="50" r="2" fill="white" />
+            <circle cx="30" cy="130" r="2" fill="white" />
+          </svg>
+        </div>
+
+        <div className="absolute bottom-16 left-10 opacity-[0.05] animate-float" style={{ animationDelay: '3s' }}>
+          <svg width="150" height="150" viewBox="0 0 150 150" fill="none">
+            {/* 电路线条 */}
+            <path d="M10,75 L40,75 L50,50 L80,50 L90,75 L120,75 L130,50 L140,50" stroke="white" strokeWidth="1" fill="none" />
+            <path d="M10,100 L30,100 L40,80 L70,80 L80,100 L110,100 L120,80 L140,80" stroke="white" strokeWidth="0.5" fill="none" />
+            <circle cx="50" cy="50" r="3" stroke="white" strokeWidth="0.5" fill="none" />
+            <circle cx="90" cy="75" r="3" stroke="white" strokeWidth="0.5" fill="none" />
+            <circle cx="40" cy="80" r="2" fill="white" opacity="0.5" />
+            <circle cx="120" cy="80" r="2" fill="white" opacity="0.5" />
+          </svg>
+        </div>
+
+        {/* 右上电路装饰 */}
+        <div className="absolute top-1/3 right-1/4 opacity-[0.04]">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <rect x="20" y="20" width="60" height="60" rx="4" stroke="white" strokeWidth="0.5" />
+            <rect x="35" y="35" width="30" height="30" rx="2" stroke="white" strokeWidth="0.5" />
+            <line x1="50" y1="0" x2="50" y2="20" stroke="white" strokeWidth="0.5" />
+            <line x1="50" y1="80" x2="50" y2="100" stroke="white" strokeWidth="0.5" />
+            <line x1="0" y1="50" x2="20" y2="50" stroke="white" strokeWidth="0.5" />
+            <line x1="80" y1="50" x2="100" y2="50" stroke="white" strokeWidth="0.5" />
+          </svg>
+        </div>
+
+        {/* IAD Lab 大字底纹 */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-6 sm:right-16 select-none pointer-events-none">
+          <span className="text-[8rem] sm:text-[12rem] font-black text-white/[0.03] leading-none tracking-tighter">
+            IAD
+          </span>
+        </div>
 
         <div className="relative max-w-5xl mx-auto px-6 py-20 sm:py-28">
           <div className="max-w-2xl">
             <p className="text-xs text-primary-300/80 uppercase tracking-widest mb-4 animate-fade-up" style={{ animationDelay: '0.1s' }}>
               广州大学网络空间安全学院
             </p>
-            <h1 className="text-3xl sm:text-5xl font-bold text-white leading-tight mb-5 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-              智能攻防课题组
+            <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-5 animate-fade-up" style={{ animationDelay: '0.2s' }}>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-cyan-300">
+                智能攻防课题组
+              </span>
             </h1>
             <p className="text-blue-200/70 leading-relaxed mb-8 text-sm sm:text-base animate-fade-up" style={{ animationDelay: '0.3s' }}>
               Intelligent Attack and Defense Lab（IAD Lab）专注于人工智能与网络安全的交叉研究，
@@ -65,10 +120,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 统计数据 */}
-      <section className="border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
+      {/* 统计数据 - 深色背景 */}
+      <section className="hero-bg relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-50" />
+        <div className="absolute inset-0 shimmer" />
+        <div className="relative max-w-5xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {homeData.stats.map(({ num, label }) => (
               <StatItem key={label} num={num} label={label} />
             ))}
@@ -76,8 +133,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 课题组简介 */}
-      <section>
+      {/* 课题组简介 - 白色背景 */}
+      <section className="bg-white">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <ScrollReveal>
             <h2 className="section-title">课题组简介</h2>
@@ -122,16 +179,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 课题组负责人 */}
-      <section className="border-t border-gray-100">
+      {/* 课题组负责人 - 浅灰背景 */}
+      <section className="bg-gray-50/50">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <ScrollReveal>
             <h2 className="section-title">课题组负责人</h2>
             <div className="section-divider" />
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <Link to="/members" className="card card-hover block cursor-pointer group">
-              <div className="flex flex-col sm:flex-row gap-6">
+            <Link to="/members" className="card card-hover block cursor-pointer group relative overflow-hidden">
+              {/* 左侧渐变装饰条 */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-500 via-accent-500 to-primary-600 rounded-l-xl" />
+              <div className="flex flex-col sm:flex-row gap-6 pl-4">
                 <div className="flex-shrink-0">
                   <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-semibold text-2xl shadow-lg shadow-primary-600/20 group-hover:shadow-xl group-hover:shadow-primary-600/30 transition-all duration-300">
                     鲁
@@ -164,8 +223,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 研究方向 */}
-      <section className="border-t border-gray-100">
+      {/* 研究方向 - 白色背景 */}
+      <section className="bg-white">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <ScrollReveal>
             <h2 className="section-title">研究方向</h2>
@@ -175,7 +234,7 @@ export default function Home() {
             {researchDirections.map(({ icon, title, desc }, idx) => (
               <ScrollReveal key={title} delay={idx * 100}>
                 <Link to={`/achievements?tab=papers&dir=${encodeURIComponent(title)}`}
-                  className={`card block border-l-[3px] transition-all duration-300 group cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${dirBorderColors[title] || ''}`}>
+                  className={`card block border-l-4 transition-all duration-300 group cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${dirBorderColors[title] || ''}`}>
                   <div className="flex items-start gap-3">
                     <div className={`w-9 h-9 bg-gray-50 text-gray-500 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${dirIconColors[title] || ''}`}>
                       {icon}
@@ -193,8 +252,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 最新动态 */}
-      <section className="border-t border-gray-100">
+      {/* 最新动态 - 浅灰背景 */}
+      <section className="bg-gray-50/50">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-2">

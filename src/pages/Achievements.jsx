@@ -76,15 +76,17 @@ export default function Achievements() {
   const filteredAwards = awardYear === '全部' ? awards : awards.filter(a => a.year === awardYear)
 
   return (
-    <div className="page-container">
-      {/* 装饰性标题区域 */}
-      <div className="relative mb-8">
-        <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary-50 rounded-full blur-3xl opacity-50" />
-        <div className="relative">
-          <h1 className="section-title">学术成果</h1>
-          <div className="section-divider" />
+    <div>
+      {/* 页头横幅 */}
+      <div className="page-header">
+        <div className="page-header-grid" />
+        <div className="relative max-w-5xl mx-auto px-6 py-10">
+          <h1 className="text-2xl font-bold text-white mb-1">学术成果</h1>
+          <p className="text-sm text-blue-200/60">Academic Achievements</p>
         </div>
       </div>
+
+      <div className="page-container">
 
       {/* Tabs */}
       <div className="flex gap-1 bg-gray-100/80 rounded-xl p-1 mb-8 flex-wrap backdrop-blur-sm">
@@ -288,6 +290,7 @@ export default function Achievements() {
           </div>
         </section>
       )}
+      </div>
     </div>
   )
 }
