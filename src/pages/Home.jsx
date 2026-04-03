@@ -341,7 +341,7 @@ export default function Home() {
                   <div className="flex items-center gap-2.5 flex-wrap mb-1.5">
                     <h3 className="text-base font-semibold text-gray-900 group-hover:text-primary-700 transition-colors">鲁 辉</h3>
                     <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-md">教授 / 博士生导师</span>
-                    <span className="text-xs bg-primary-50 text-primary-700 px-2 py-0.5 rounded-md font-medium">国家级人才</span>
+                    <span className="text-xs bg-primary-50 text-primary-700 px-2 py-0.5 rounded-md font-medium">国家级人才项目入选者</span>
                   </div>
                  <p className="text-xs text-gray-400 mb-3">广州大学网络空间先进技术研究院 院长 · 广东新型基础设施网络安全重点实验室 主任 · 黄埔方班班主任 · 新安盟秘书长</p>
                   <p className="text-sm text-gray-600 leading-relaxed mb-4">
